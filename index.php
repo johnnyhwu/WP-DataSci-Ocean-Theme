@@ -26,7 +26,61 @@
 
     <div class="sub-container">
         <div class="left">
-            LEFT
+            <article>
+                <div class="article-info">
+                    <div class="text">
+                      <div class="title">這是文章的標題</div>
+                      <div class="abstract">這是文章的摘要哇哇哇哇～這是一篇範例文章～～～超級酷的！！！</div>
+                    </div>
+                    <div class="meta-data">
+                        <span class="date">Jan 11</span>．<span class="estimation">11 min read</span>．<span class="category">Python 教學</span>
+                    </div>
+                </div>
+
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/sample-image.jpeg" alt="article thumbnail">
+            </article>
+
+            <article>
+                <div class="article-info">
+                    <div class="text">
+                      <div class="title">這是文章的標題</div>
+                      <div class="abstract">這是文章的摘要哇哇哇哇～這是一篇範例文章～～～超級酷的！！！</div>
+                    </div>
+                    <div class="meta-data">
+                        <span class="date">Jan 11</span>．<span class="estimation">11 min read</span>．<span class="category">Python 教學</span>
+                    </div>
+                </div>
+
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/sample-image.jpeg" alt="article thumbnail">
+            </article>
+
+            <article>
+                <div class="article-info">
+                    <div class="text">
+                      <div class="title">這是文章的標題</div>
+                      <div class="abstract">這是文章的摘要哇哇哇哇～這是一篇範例文章～～～超級酷的！！！</div>
+                    </div>
+                    <div class="meta-data">
+                        <span class="date">Jan 11</span>．<span class="estimation">11 min read</span>．<span class="category">Python 教學</span>
+                    </div>
+                </div>
+
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/sample-image.jpeg" alt="article thumbnail">
+            </article>
+
+            <article>
+                <div class="article-info">
+                    <div class="text">
+                      <div class="title">這是文章的標題</div>
+                      <div class="abstract">這是文章的摘要哇哇哇哇～這是一篇範例文章～～～超級酷的！！！</div>
+                    </div>
+                    <div class="meta-data">
+                        <span class="date">Jan 11</span>．<span class="estimation">11 min read</span>．<span class="category">Python 教學</span>
+                    </div>
+                </div>
+
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/sample-image.jpeg" alt="article thumbnail">
+            </article>
         </div>
 
         <div class="right">
