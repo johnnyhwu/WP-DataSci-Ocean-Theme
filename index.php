@@ -57,13 +57,13 @@
                 </div>
             </div>
 
-            <div class="function-box">
-                FUNCTION BOX
-            </div>
+            <div class="box-divider"></div>
 
             <div class="multichannel-box">
                 MULTICHANNEL BOX
             </div>
+
+            <div class="box-divider"></div>
 
             <div class="ad-box">
                 AD BOX
@@ -79,47 +79,72 @@
 
 
 <script>
-  /*
-   * Light YouTube Embeds by @labnol
-   * Credit: https://www.labnol.org/
-   */
+    /*
+    * Light YouTube Embeds by @labnol
+    * Credit: https://www.labnol.org/
+    */
 
-  function labnolIframe(div) {
+    function labnolIframe(div) {
     var iframe = document.createElement('iframe');
     iframe.setAttribute(
-      'src',
-      'https://www.youtube.com/embed/' + div.dataset.id + '?autoplay=1&rel=0'
+        'src',
+        'https://www.youtube.com/embed/' + div.dataset.id + '?autoplay=1&rel=0'
     );
     iframe.setAttribute('frameborder', '0');
     iframe.setAttribute('allowfullscreen', '1');
     iframe.setAttribute(
-      'allow',
-      'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+        'allow',
+        'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
     );
     div.parentNode.replaceChild(iframe, div);
-  }
+    }
 
-  function initYouTubeVideos() {
+    function initYouTubeVideos() {
     var playerElements = document.getElementsByClassName('youtube-player');
     for (var n = 0; n < playerElements.length; n++) {
-      var videoId = playerElements[n].dataset.id;
-      var div = document.createElement('div');
-      div.setAttribute('data-id', videoId);
-      var thumbNode = document.createElement('img');
-      thumbNode.src = '//i.ytimg.com/vi/ID/hqdefault.jpg'.replace(
+        var videoId = playerElements[n].dataset.id;
+        var div = document.createElement('div');
+        div.setAttribute('data-id', videoId);
+        var thumbNode = document.createElement('img');
+        thumbNode.src = '//i.ytimg.com/vi/ID/hqdefault.jpg'.replace(
         'ID',
         videoId
-      );
-      div.appendChild(thumbNode);
-      var playButton = document.createElement('div');
-      playButton.setAttribute('class', 'play');
-      div.appendChild(playButton);
-      div.onclick = function () {
+        );
+        div.appendChild(thumbNode);
+        var playButton = document.createElement('div');
+        playButton.setAttribute('class', 'play');
+        div.appendChild(playButton);
+        div.onclick = function () {
         labnolIframe(this);
-      };
-      playerElements[n].appendChild(div);
+        };
+        playerElements[n].appendChild(div);
     }
-  }
+    }
 
-  document.addEventListener('DOMContentLoaded', initYouTubeVideos);
+    document.addEventListener('DOMContentLoaded', initYouTubeVideos);
+
+    // calculate px of 1vh
+    var vhpx = window.outerHeight / 100;
+    window.onscroll = function() {
+
+        headerEmt = document.querySelector('header');
+        navTextEmts = document.querySelectorAll('header div.site-nav div ul li a');
+
+        if(window.scrollY > 45 * vhpx) {
+            headerEmt.style.backgroundColor = 'white';
+
+            for(let idx=0; idx<navTextEmts.length; idx++) {
+                navTextEmts[idx].style.color = '#2ba4e3';
+            }
+            
+        } else {
+            headerEmt.style.backgroundColor = '#2ba4e3';
+
+            for(let idx=0; idx<navTextEmts.length; idx++) {
+                navTextEmts[idx].style.color = 'white';
+            }
+        }
+    }
+    
+
 </script>

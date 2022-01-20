@@ -50,6 +50,7 @@
         height: 9vh;
 
         background-color: #2ba4e3;
+        transition: background-color 0.3s linear;
 
         border-bottom-color: black;
         border-bottom-width: 1px;
@@ -119,6 +120,7 @@
 
                     header div.site-nav div ul li a {
                         text-decoration: none;
-                        color: white
+                        color: white;
+                        transition: color 0.3s linear;
                     }
 </style>

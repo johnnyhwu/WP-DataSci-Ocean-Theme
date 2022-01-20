@@ -275,6 +275,14 @@ div.main-container div.sub-container {
         width: 100%;
     }
 
+    div.right > div.box-divider {
+        height: 1px;
+        background-color: #757575;
+        opacity: 0.4;
+
+        margin: 4vh 0;
+    }
+
     div.right div.author-box {
         display: flex;
         flex-direction: row;
