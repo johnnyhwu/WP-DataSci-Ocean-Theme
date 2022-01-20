@@ -259,8 +259,118 @@ div.main-container div.sub-container {
     div.sub-container div.right {
         width: 30%;
         height: 100%;
-        background-color:chartreuse;
+        /*background-color:chartreuse;*/
+
+        position: sticky;
+        position: -webkit-sticky;
+        top: 16vh;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
     }
+
+    div.right > div {
+        width: 100%;
+    }
+
+    div.right div.author-box {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+        div.right div.author-box > img {
+            width: 30%;
+        }
+
+        div.right div.author-box > div {
+            width: 70%;
+
+            box-sizing: border-box;
+            padding-left: 8%;
+        }
+
+            div.right div.author-box > div > div.name {
+                color: black;
+                font-size: 1.2rem;
+                font-weight: bold;
+
+                margin-bottom: 0.5vh;
+            }
+
+            div.right div.author-box > div > div.desc {
+                color: #757575;
+                font-size: 0.9rem;
+
+                margin-bottom: 1vh;
+            }
+
+            div.right div.author-box > div > div.contact {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: flex-end;
+            }
+
+                div.right div.author-box > div > div.contact > button {
+                    background-color: #2ba4e3;
+                    
+                    color: white;
+                    font-size: 0.9rem;
+
+                    border-style: solid;
+                    border-width: 1px;
+                    border-color: white;
+                    border-radius: 8px;
+
+                    box-shadow: none;
+
+                    box-sizing: border-box;
+                    padding: 4px 15px;
+
+                    transition: color 0.2s linear, background-color 0.2s linear;
+                }
+
+                div.right div.author-box > div > div.contact > button:hover {
+                    background-color: white;
+                    
+                    color: #2ba4e3;
+                    font-size: 0.9rem;
+
+                    border-style: solid;
+                    border-width: 1px;
+                    border-radius: 8px;
+                    border-color: #2ba4e3;
+
+                    cursor: pointer;
+
+                    box-shadow: none;
+
+                    box-sizing: border-box;
+                    padding: 4px 15px;
+                }
+
+                div.right div.author-box > div > div.contact > button[name="mail"] {
+                    margin-right: 8%;
+                }
+
+    div.right div.function-box {
+        
+    }
+
+    div.right div.multichannel-box {
+        
+    }
+
+    div.right div.ad-box {
+        
+    }
+
+
 
 
 

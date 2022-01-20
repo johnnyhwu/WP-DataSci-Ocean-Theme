@@ -26,65 +26,48 @@
 
     <div class="sub-container">
         <div class="left">
-            <article>
-                <div class="article-info">
-                    <div class="text">
-                      <div class="title">這是文章的標題</div>
-                      <div class="abstract">這是文章的摘要哇哇哇哇～這是一篇範例文章～～～超級酷的！！！</div>
-                    </div>
-                    <div class="meta-data">
-                        <span class="date">Jan 11</span>．<span class="estimation">11 min read</span>．<span class="category">Python 教學</span>
-                    </div>
-                </div>
 
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/sample-image.jpeg" alt="article thumbnail">
-            </article>
+          <?php for($i=0; $i<10; $i++): ?>
+              <article>
+                  <div class="article-info">
+                      <div class="text">
+                        <div class="title">這是文章的標題</div>
+                        <div class="abstract">這是文章的摘要哇哇哇哇～這是一篇範例文章～～～超級酷的！！！</div>
+                      </div>
+                      <div class="meta-data">
+                          <span class="date">Jan 11</span>．<span class="estimation">11 min read</span>．<span class="category">Python 教學</span>
+                      </div>
+                  </div>
 
-            <article>
-                <div class="article-info">
-                    <div class="text">
-                      <div class="title">這是文章的標題</div>
-                      <div class="abstract">這是文章的摘要哇哇哇哇～這是一篇範例文章～～～超級酷的！！！</div>
-                    </div>
-                    <div class="meta-data">
-                        <span class="date">Jan 11</span>．<span class="estimation">11 min read</span>．<span class="category">Python 教學</span>
-                    </div>
-                </div>
-
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/sample-image.jpeg" alt="article thumbnail">
-            </article>
-
-            <article>
-                <div class="article-info">
-                    <div class="text">
-                      <div class="title">這是文章的標題</div>
-                      <div class="abstract">這是文章的摘要哇哇哇哇～這是一篇範例文章～～～超級酷的！！！</div>
-                    </div>
-                    <div class="meta-data">
-                        <span class="date">Jan 11</span>．<span class="estimation">11 min read</span>．<span class="category">Python 教學</span>
-                    </div>
-                </div>
-
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/sample-image.jpeg" alt="article thumbnail">
-            </article>
-
-            <article>
-                <div class="article-info">
-                    <div class="text">
-                      <div class="title">這是文章的標題</div>
-                      <div class="abstract">這是文章的摘要哇哇哇哇～這是一篇範例文章～～～超級酷的！！！</div>
-                    </div>
-                    <div class="meta-data">
-                        <span class="date">Jan 11</span>．<span class="estimation">11 min read</span>．<span class="category">Python 教學</span>
-                    </div>
-                </div>
-
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/sample-image.jpeg" alt="article thumbnail">
-            </article>
+                  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/sample-image.jpeg" alt="article thumbnail">
+              </article>
+          <?php endfor; ?>
         </div>
 
         <div class="right">
-            RIGHT
+            <div class="author-box">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/avatar.jpg" alt="avatar">
+                <div class="wrapper">
+                    <div class="name">Johnny</div>
+                    <div class="desc">對於電腦科學與深度學習感興趣，透過文章分享所學！</div>
+                    <div class="contact">
+                        <button type="button" name="mail">寄信</button>
+                        <button type="button" name="subscribe">訂閱</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="function-box">
+                FUNCTION BOX
+            </div>
+
+            <div class="multichannel-box">
+                MULTICHANNEL BOX
+            </div>
+
+            <div class="ad-box">
+                AD BOX
+            </div>
         </div>
     </div>
 
