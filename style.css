@@ -241,13 +241,14 @@ div.main-container div.sub-container {
                     font-size: 0.9rem;
                 }
 
-                    div.article-info div.meta-data span.category:hover {
+                    div.article-info div.meta-data span.category a {
                         transition: color 0.3s linear;
+                        color: #757575;
+                        text-decoration: none;
                     }
 
-                    div.article-info div.meta-data span.category:hover {
+                    div.article-info div.meta-data span.category a:hover {
                         color: #2ba4e3;
-                        cursor: pointer;
                     }
 
             div.left article img {
@@ -280,7 +281,7 @@ div.main-container div.sub-container {
         background-color: #757575;
         opacity: 0.4;
 
-        margin: 4vh 0;
+        margin: 3.5vh 0;
     }
 
     div.right div.author-box {
@@ -366,17 +367,32 @@ div.main-container div.sub-container {
                     margin-right: 8%;
                 }
 
-    div.right div.function-box {
-        
-    }
-
     div.right div.multichannel-box {
-        
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start;
     }
+        div.right div.multichannel-box  img {
+            width: 45px;
+        }
 
     div.right div.ad-box {
-        
+
     }
+
+        div.right div.ad-box > div {
+            width: 100%;
+            min-height: 23vh;
+            background-color: #757575;
+            opacity: 0.3;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            margin-bottom: 30px;
+        }
 
 
 
