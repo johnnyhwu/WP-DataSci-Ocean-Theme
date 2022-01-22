@@ -3,21 +3,31 @@
     get_header();
 ?>
 
-<div class="main-container">
+<div class="post-container">
 
-    <?php while ( have_posts() ) : the_post(); ?>
-        <?php the_title( '<h1>', '</h1>' ); ?>
-        <?php the_content(); ?>
-    <?php endwhile; ?>
+    <div class="left-sidebar">
+        LEFT SIDEBAR
+    </div>
+
+    <div class="middle-content">
+        <?php while ( have_posts() ) : the_post(); ?>
+            <?php the_title( '<h1>', '</h1>' ); ?>
+            <?php the_content(); ?>
+        <?php endwhile; ?>
+    </div>
+
+    <div class="right-sidebar">
+        RIGHT SIDEBAR
+    </div>
 </div>
 
 <?php
     get_footer();
 ?>
 
-<style>   
+<style>
+    
 </style>
-
 
 <script>
 </script>

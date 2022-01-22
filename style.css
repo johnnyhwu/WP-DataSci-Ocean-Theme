@@ -12,3 +12,38 @@ body {
     margin: 0;
     font-family: 'Noto Sans TC', sans-serif;
 }
+
+div.post-container {
+    background-color: cornsilk;
+    padding: 16vh 15vw;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+    div.left-sidebar {
+        background-color: darkgray;
+        width: 20%;
+        height: 75vh;
+
+        position: sticky;
+        position: -webkit-sticky;
+        top: 16vh;
+    }
+
+    div.right-sidebar {
+        background-color:darkkhaki;
+        width: 20%;
+        height: 75vh;
+
+        position: sticky;
+        position: -webkit-sticky;
+        top: 16vh;
+    }
+
+    div.middle-content {
+        background-color: darksalmon;
+        width: 60%;
+    }
