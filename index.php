@@ -1,6 +1,8 @@
 <?php
     /* Template Name: 首頁*/
     get_header();
+
+    $current_page_id = get_the_ID();
 ?>
 
 <div class="main-container">
@@ -24,6 +26,8 @@
         </div>
     </div>
 
+    
+
     <div class="sub-container">
         <div class="left">
 
@@ -36,25 +40,30 @@
             ?>
 
             <?php foreach($latest_posts as $post): ?>
-                <article>
-                    <div class="article-info">
-                        <div class="text">
-                            <div class="title"><?php echo $post->post_title ?></div>
-                            <div class="abstract"><?php echo get_field('abstract', $post->ID); ?></div>
-                        </div>
+                
+                    <article>
+                            <div class="article-info">
+                                <a href="<?php echo get_permalink($post->ID); ?>">
+                                    <div class="text">
+                                        <div class="title"><?php echo $post->post_title ?></div>
+                                        <div class="abstract"><?php echo get_field('abstract', $post->ID); ?></div>
+                                    </div>
+                                </a>
+                                
 
-                        <div class="meta-data">
-                            <?php 
-                                $cate = get_the_category($latest_posts[0]->ID)[0];
-                                $cate_name = $cate->name;
-                                $cate_link = get_category_link($cate->term_id);
-                            ?>
-                            <span class="date"><?php echo date("M j", strtotime($post->post_date)); ?></span>．<span class="estimation"><?php echo get_field('estimated_time', $post->ID); ?> min read</span>．<span class="category"><a href="<?php echo $cate_link; ?>"><?php echo $cate_name; ?></a></span>
-                        </div>
-                    </div>
+                                <div class="meta-data">
+                                    <?php 
+                                        $cate = get_the_category($latest_posts[0]->ID)[0];
+                                        $cate_name = $cate->name;
+                                        $cate_link = get_category_link($cate->term_id);
+                                    ?>
+                                    <span class="date"><?php echo date("M j", strtotime($post->post_date)); ?></span>．<span class="estimation"><?php echo get_field('estimated_time', $post->ID); ?> min read</span>．<span class="category"><a href="<?php echo $cate_link; ?>"><?php echo $cate_name; ?></a></span>
+                                </div>
+                            </div>
 
-                    <img src="<?php echo get_field('thumbnail', $post->ID)['sizes']['medium'] ?>" alt="article thumbnail">
-                </article>
+                            <a class="img-anchor" href="<?php echo get_permalink($post->ID); ?>"><img src="<?php echo get_field('thumbnail', $post->ID)['sizes']['medium'] ?>" alt="article thumbnail"></a>
+                    </article>
+                
             <?php endforeach; ?>
  
 
@@ -95,9 +104,9 @@
             <div class="box-divider"></div>
 
             <div class="multichannel-box">
-                <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/youtube-logo.png" alt="youtube"></a>
-                <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/instagram-logo.png" alt="instagram"></a>
-                <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/matters-logo.jpeg" alt="matters"></a>
+                <a href="<?php echo get_field('multimedia_group', $current_page_id)['youtube']; ?>" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/youtube-logo.png" alt="youtube"></a>
+                <a href="<?php echo get_field('multimedia_group', $current_page_id)['instagram']; ?>" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/instagram-logo.png" alt="instagram"></a>
+                <a href="<?php echo get_field('multimedia_group', $current_page_id)['matters']; ?>" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/matters-logo.jpeg" alt="matters"></a>
             </div>
 
             <div class="box-divider"></div>
@@ -116,9 +125,403 @@
 
 </div>
 
-<?php
-    get_footer();
-?>
+</body>
+</html>
+
+<style>
+    div.main-container div.banner {
+        width: 100%;
+        height: 55vh;
+        background-color: #2ba4e3;
+
+        box-sizing: border-box;
+        padding: 12vh 18% 2%;
+
+        display: flex;
+        flex-direction: row;
+    }
+
+        div.main-container div.banner > div {
+            height: 100%;
+        }
+
+        div.main-container div.banner div.left {
+            /*background-color:turquoise;*/
+            width: 50%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+            div.main-container div.banner div.left div.site-title {
+                height: 22%;
+                width: 100%;
+                /*background-color: violet;*/
+
+                font-size: 3rem;
+                font-weight: bold;
+                color: white;
+            }
+
+            div.main-container div.banner div.left div.site-desc {
+                height: 45%;
+                width: 100%;
+                /*background-color:yellow;*/
+
+                font-size: 1.2rem;
+                color: white;
+            }
+
+            div.main-container div.banner div.left div.site-btn {
+                height: 10%;
+                width: 100%;
+                /*background-color:blue;*/
+
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+            }
+
+                div.main-container div.banner div.left div.site-btn a {
+                    text-decoration: none;
+                }
+
+                    div.main-container div.banner div.left div.site-btn span {
+                        background-color: white;
+                        
+                        color: black;
+                        font-size: 1.1rem;
+
+                        border-style: solid;
+                        border-width: 1px;
+                        border-color: black;
+                        border-radius: 10px;
+
+                        box-sizing: border-box;
+                        padding: 12px 30px;
+
+                        transition-property: background-color, color, border-color;
+                        transition-duration: 0.3s;
+                        transition-timing-function: ease-in-out;
+
+                    }
+
+                    div.main-container div.banner div.left div.site-btn span:hover {
+                        background-color: #2ba4e3;
+                        
+                        color: white;
+                        font-size: 1.1rem;
+
+                        border-style: solid;
+                        border-width: 1px;
+                        border-color: white;
+                        border-radius: 10px;
+
+                        box-sizing: border-box;
+                        padding: 12px 30px;
+                    }
+
+            
+
+        div.main-container div.banner div.right {
+            width: 50%;
+        }
+
+            .youtube-player {
+                width: 100%;
+                height: 100%;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-end;
+            }
+
+                .youtube-player > div {
+                    position: relative;
+
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                    .youtube-player > div > img {
+                        max-width: 100%;
+                        max-height: 100%;
+                    }
+
+                    .youtube-player > div > div.play {
+                        position: absolute;
+
+                        width: 15%;
+                        height: 15%;
+
+                        background-image: url('//i.imgur.com/TxzC70f.png');
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        background-position: center;
+                    }
+
+                    .youtube-player > iframe {
+                        width: 80%;
+                        height: 100%;
+                    }
+
+    div.main-container div.sub-container {
+        width: 100%;
+        /*height: 70vh;*/
+
+        box-sizing: border-box;
+        padding: 2% 18%;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        margin-top: 5vh;
+    }
+
+        div.sub-container div.left {
+            width: 70%;
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
+            div.left article {
+                width: 80%;
+                height: 15vh;
+                
+                display: flex;
+                flex-direction: row;
+                justify-content: row;
+                align-items: flex-start;
+
+                margin-bottom: 6vh;
+            }
+
+                div.left article div.article-info {
+                    width: 70%;
+                    height: 100%;
+
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                }
+
+                    div.article-info div.text {
+                        width: 100%;
+                        height: 75%;
+
+                        box-sizing: border-box;
+                        padding-right: 12px;
+                    }
+
+                        div.article-info a {
+                            text-decoration: none;
+                            width: 100%;
+                            height: 100%;
+                            display: block;
+                        }
+
+                            div.article-info a div.title {
+                                width: 100%;
+                                
+                                color: black;
+                                font-size: 1.6rem;
+                                font-weight: bold;
+
+                                margin-bottom: 5px;
+                            }
+
+                            div.article-info a div.abstract {
+                                width: 100%;
+                                
+                                color: #757575;
+                                font-size: 1rem;
+                                font-weight: normal;
+                            }
+
+                    div.article-info div.meta-data {
+                        width: 100%;
+                        height: 25%;
+                        
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: flex-start;
+                        align-items: center;
+
+                        color: #757575;
+                        font-size: 0.9rem;
+                    }
+
+                        div.article-info div.meta-data span.category a {
+                            transition: color 0.3s linear;
+                            color: #757575;
+                            text-decoration: none;
+                        }
+
+                        div.article-info div.meta-data span.category a:hover {
+                            color: #2ba4e3;
+                        }
+
+                div.left article a.img-anchor {
+                    display: block;
+                    width: 30%;
+                    height: 100%;
+                }
+
+                    div.left article a.img-anchor img {
+                        height: 100%;
+                    }
+
+
+        div.sub-container div.right {
+            width: 30%;
+            height: 100%;
+            /*background-color:chartreuse;*/
+
+            position: sticky;
+            position: -webkit-sticky;
+            top: 16vh;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
+        div.right > div {
+            width: 100%;
+        }
+
+        div.right > div.box-divider {
+            height: 1px;
+            background-color: #757575;
+            opacity: 0.4;
+
+            margin: 3.5vh 0;
+        }
+
+        div.right div.author-box {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
+            div.right div.author-box > img {
+                width: 30%;
+            }
+
+            div.right div.author-box > div {
+                width: 70%;
+
+                box-sizing: border-box;
+                padding-left: 8%;
+            }
+
+                div.right div.author-box > div > div.name {
+                    color: black;
+                    font-size: 1.2rem;
+                    font-weight: bold;
+
+                    margin-bottom: 0.5vh;
+                }
+
+                div.right div.author-box > div > div.desc {
+                    color: #757575;
+                    font-size: 0.9rem;
+
+                    margin-bottom: 1vh;
+                }
+
+                div.right div.author-box > div > div.contact {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-start;
+                    align-items: flex-end;
+                }
+
+                    div.right div.author-box > div > div.contact > button {
+                        background-color: #2ba4e3;
+                        
+                        color: white;
+                        font-size: 0.9rem;
+
+                        border-style: solid;
+                        border-width: 1px;
+                        border-color: white;
+                        border-radius: 8px;
+
+                        box-shadow: none;
+
+                        box-sizing: border-box;
+                        padding: 4px 15px;
+
+                        transition: color 0.2s linear, background-color 0.2s linear;
+                    }
+
+                    div.right div.author-box > div > div.contact > button:hover {
+                        background-color: white;
+                        
+                        color: #2ba4e3;
+                        font-size: 0.9rem;
+
+                        border-style: solid;
+                        border-width: 1px;
+                        border-radius: 8px;
+                        border-color: #2ba4e3;
+
+                        cursor: pointer;
+
+                        box-shadow: none;
+
+                        box-sizing: border-box;
+                        padding: 4px 15px;
+                    }
+
+                    div.right div.author-box > div > div.contact > button[name="mail"] {
+                        margin-right: 8%;
+                    }
+
+        div.right div.multichannel-box {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: flex-start;
+        }
+            div.right div.multichannel-box  img {
+                width: 45px;
+            }
+
+        div.right div.ad-box {
+
+        }
+
+            div.right div.ad-box > div {
+                width: 100%;
+                min-height: 23vh;
+                background-color: #757575;
+                opacity: 0.3;
+                
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                margin-bottom: 30px;
+            }
+</style>
 
 
 <script>
