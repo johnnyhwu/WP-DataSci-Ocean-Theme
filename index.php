@@ -153,6 +153,9 @@
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
+
+            box-sizing: border-box;
+            padding-right: 20px;
         }
 
             div.main-container div.banner div.left div.site-title {
@@ -175,7 +178,7 @@
             }
 
             div.main-container div.banner div.left div.site-btn {
-                height: 10%;
+                height: 30%;
                 width: 100%;
                 /*background-color:blue;*/
 

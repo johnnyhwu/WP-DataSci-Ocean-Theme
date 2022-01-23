@@ -11,8 +11,23 @@
 
     <div class="middle-content">
         <?php while ( have_posts() ) : the_post(); ?>
-            <?php the_title( '<h1>', '</h1>' ); ?>
-            <?php the_content(); ?>
+            
+            <section class="current-post">
+                <?php the_title( '<h1>', '</h1>' ); ?>
+                <?php the_content(); ?>
+            </section>
+
+            <div class="box-divider"></div>
+
+            <section class="more-post">
+                MORE POST
+            </section>
+
+            <div class="box-divider"></div>
+
+            <section class="discussion">
+                DISCUSSION
+            </section>
         <?php endwhile; ?>
     </div>
 
