@@ -94,8 +94,38 @@ div.post-container {
                     /*background-color:chartreuse;*/
                     width: 30%;
                 }
+            
+            div.middle-content section.current-post div.post-tag {
+                width: 100%;
+                /*background-color: chocolate;*/
+                margin-top: 7vh;
+            }
 
+                div.middle-content section.current-post div.post-tag ul {
+                    margin: 0;
+                    padding: 0;
+                    list-style-type: none;
 
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                }
+
+                    div.middle-content section.current-post div.post-tag ul li.tag {
+                        font-size: 0.85rem;
+                        
+                        background-color: rgba(209, 203, 203, 0.3);
+
+                        margin-right: 15px;
+                        padding: 5px 15px;
+                        border-radius: 3px;
+                    }
+
+                        div.middle-content section.current-post div.post-tag ul li.tag a {
+                            text-decoration: none;
+                            color: #757575;
+                        }
 
 
             div.middle-content section.current-post h1 {

@@ -26,6 +26,18 @@
                 </div>
 
                 <?php the_content(); ?>
+
+                <div class="post-tag">
+
+                    <?php $tag_arr = get_the_tags(); ?>
+                    
+                    <ul>
+                        <?php foreach($tag_arr as $tag): ?>
+                            <li class="tag"><a href="<?php echo get_tag_link($tag->term_id); ?>"><?php echo $tag->name; ?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                    
+                </div>
             </section>
 
             <div class="box-divider"></div>
