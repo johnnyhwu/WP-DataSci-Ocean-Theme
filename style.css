@@ -125,6 +125,7 @@ div.post-container {
                         div.middle-content section.current-post div.post-tag ul li.tag a {
                             text-decoration: none;
                             color: #757575;
+                            border-width: 0px;
                         }
 
 
@@ -140,13 +141,43 @@ div.post-container {
                 margin-block-end: 0.6rem;
             }
 
-            div.middle-content section.current-post p, div.middle-content section.current-post li {
+            div.middle-content section.current-post p, 
+            div.middle-content section.current-post li {
                 font-size: 1.16rem;
                 font-weight: 300;
+                letter-spacing: 0.5px;
+                line-height: 2.2rem;
             }
-                div.middle-content section.current-post p strong, div.middle-content section.current-post li strong {
+                div.middle-content section.current-post p strong, 
+                div.middle-content section.current-post li strong {
                     font-weight: 500;
                 }
+
+                div.middle-content section.current-post p a, 
+                div.middle-content section.current-post li a {
+                    text-decoration: none;
+                    color: black;
+
+                    border-bottom-style: solid;
+                    border-bottom-color: black;
+                    border-bottom-width: 2px;
+                }
+            
+            div.middle-content section.current-post pre {
+                background-color: rgba(242, 242, 242, 1);
+                color: rgba(0, 0, 0, 0.753);
+                font-size: 1.1rem;
+                font-weight: 300;
+
+                padding: 2vh 5%;
+                margin: 4vh 0;
+
+                overflow-x: scroll;
+            }
+
+            div.middle-content section.current-post pre::-webkit-scrollbar {
+                display: none;
+            }
 
             div.middle-content section.current-post div.wp-caption.aligncenter {
                 width: 100% !important;
