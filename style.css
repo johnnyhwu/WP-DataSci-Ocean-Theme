@@ -70,6 +70,34 @@ div.post-container {
             background-color: white;
         }
 
+            div.middle-content section.current-post div.post-meta {
+                /*background-color: aqua;*/
+                width: 100%;
+
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+
+                div.middle-content section.current-post div.post-meta div.left {
+                    /*background-color: blanchedalmond;*/
+                    width: 70%;
+                }
+                    div.middle-content section.current-post div.post-meta div.left span {
+                        color: #757575;
+                        opacity: 0.6;
+                        font-size: 1.05rem;
+                    }
+
+                div.middle-content section.current-post div .post-meta div.right {
+                    /*background-color:chartreuse;*/
+                    width: 30%;
+                }
+
+
+
+
             div.middle-content section.current-post h1 {
                 font-size: 2rem;
                 letter-spacing: 2px;
@@ -90,17 +118,17 @@ div.post-container {
                     font-weight: 500;
                 }
 
-            div.middle-content section.current-post div {
+            div.middle-content section.current-post div.wp-caption.aligncenter {
                 width: 100% !important;
                 margin-bottom: 5vh;
             }
 
-                div.middle-content section.current-post div img {
+                div.middle-content section.current-post div.wp-caption.aligncenter img {
                     width: 100%;
                     height: auto;
                 }
 
-                div.middle-content section.current-post div p {
+                div.middle-content section.current-post div.wp-caption.aligncenter p {
                     color: #757575;
                     opacity: 0.6;
 

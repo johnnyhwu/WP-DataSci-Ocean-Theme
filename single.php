@@ -14,6 +14,17 @@
             
             <section class="current-post">
                 <?php the_title( '<h1>', '</h1>' ); ?>
+
+                <div class="post-meta">
+                    <div class="left">
+                        <span class="post-date"><?php echo the_date('M j'); ?> · </span><span class="estimated-time"><?php echo get_field('estimated_time'); ?> min</span>
+                    </div>
+
+                    <div class="right">
+                        
+                    </div>
+                </div>
+
                 <?php the_content(); ?>
             </section>
 
