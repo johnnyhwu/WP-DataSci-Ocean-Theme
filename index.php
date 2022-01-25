@@ -578,12 +578,17 @@
 
         headerEmt = document.querySelector('header');
         navTextEmts = document.querySelectorAll('header div.site-nav div ul li a');
+        mobBurgerEmts = document.querySelectorAll("div.site-nav-mobile-burger span");
 
         if(window.scrollY > 45 * vhpx) {
             headerEmt.style.backgroundColor = 'white';
 
             for(let idx=0; idx<navTextEmts.length; idx++) {
                 navTextEmts[idx].style.color = '#2ba4e3';
+
+                mobBurgerEmts[0].style.background = '#2ba4e3';
+                mobBurgerEmts[1].style.background = '#2ba4e3';
+                mobBurgerEmts[2].style.background = '#2ba4e3';
             }
             
         } else {
@@ -591,6 +596,10 @@
 
             for(let idx=0; idx<navTextEmts.length; idx++) {
                 navTextEmts[idx].style.color = 'white';
+
+                mobBurgerEmts[0].style.background = 'white';
+                mobBurgerEmts[1].style.background = 'white';
+                mobBurgerEmts[2].style.background = 'white';
             }
         }
     }
