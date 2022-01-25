@@ -256,10 +256,17 @@
         display: flex;
     }
 
+    header {
+        padding: 0% 10%;
+    }
+
+
 }
 
 @media screen and (max-width: 992px) {
-
+    header {
+        padding: 0% 5%;
+    }
 
 
 }

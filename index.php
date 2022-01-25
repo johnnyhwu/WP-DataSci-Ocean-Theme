@@ -57,7 +57,30 @@
                                         $cate_name = $cate->name;
                                         $cate_link = get_category_link($cate->term_id);
                                     ?>
-                                    <span class="date"><?php echo date("M j", strtotime($post->post_date)); ?></span>．<span class="estimation"><?php echo get_field('estimated_time', $post->ID); ?> min read</span>．<span class="category"><a href="<?php echo $cate_link; ?>"><?php echo $cate_name; ?></a></span>
+                                    <span class="date"><?php echo date("M j", strtotime($post->post_date)); ?></span><span class="estimation">．<?php echo get_field('estimated_time', $post->ID); ?> min read</span>．<span class="category"><a href="<?php echo $cate_link; ?>"><?php echo $cate_name; ?></a></span>
+                                </div>
+                            </div>
+
+                            <a class="img-anchor" href="<?php echo get_permalink($post->ID); ?>"><img src="<?php echo get_field('thumbnail', $post->ID)['sizes']['medium'] ?>" alt="article thumbnail"></a>
+                    </article>
+
+                    <article>
+                            <div class="article-info">
+                                <a href="<?php echo get_permalink($post->ID); ?>">
+                                    <div class="text">
+                                        <div class="title"><?php echo $post->post_title ?></div>
+                                        <div class="abstract"><?php echo get_field('abstract', $post->ID); ?></div>
+                                    </div>
+                                </a>
+                                
+
+                                <div class="meta-data">
+                                    <?php 
+                                        $cate = get_the_category($latest_posts[0]->ID)[0];
+                                        $cate_name = $cate->name;
+                                        $cate_link = get_category_link($cate->term_id);
+                                    ?>
+                                    <span class="date"><?php echo date("M j", strtotime($post->post_date)); ?></span><span class="estimation">．<?php echo get_field('estimated_time', $post->ID); ?> min read</span>．<span class="category"><a href="<?php echo $cate_link; ?>"><?php echo $cate_name; ?></a></span>
                                 </div>
                             </div>
 
@@ -65,27 +88,6 @@
                     </article>
                 
             <?php endforeach; ?>
- 
-
-            <?php for($i=0; $i<10; $i++): ?>
-
-                <!-- 
-                article template: 
-                <article>
-                    <div class="article-info">
-                        <div class="text">
-                            <div class="title">這是文章的標題</div>
-                            <div class="abstract">這是文章的摘要哇哇哇哇～這是一篇範例文章～～～超級酷的！！！</div>
-                        </div>
-                        <div class="meta-data">
-                            <span class="date">Jan 11</span>．<span class="estimation">11 min read</span>．<span class="category">Python 教學</span>
-                        </div>
-                    </div>
-
-                    <img src="<?php /* echo get_template_directory_uri();*/ ?>/assets/images/sample-image.jpeg" alt="article thumbnail">
-                </article>
-            -->
-            <?php endfor; ?>
         </div>
 
         <div class="right">
@@ -524,6 +526,231 @@
 
                 margin-bottom: 30px;
             }
+
+
+
+@media screen and (max-width: 1200px) {
+    div.main-container div.banner {
+        padding: 12vh 10% 2%;
+    }
+
+    div.main-container div.sub-container {
+        padding: 2% 10%;
+    }
+
+    div.main-container div.banner div.left div.site-title {
+        font-size: 2.7rem;
+    }
+
+    div.main-container div.banner div.left div.site-desc {
+        font-size: 1.1rem;
+    }
+
+    div.main-container div.banner div.left div.site-btn span {
+        font-size: 1.0rem;
+    }
+
+    div.article-info a div.title {
+        font-size: 1.5rem;
+    }
+
+    div.article-info a div.abstract {
+        font-size: 0.95rem;
+    }
+}
+
+@media screen and (max-width: 992px) {
+
+    div.main-container div.banner {
+        padding: 12vh 5% 2%;
+    }
+
+    div.main-container div.sub-container {
+        padding: 2% 5%;
+    }
+
+    div.main-container div.banner div.left div.site-title {
+        font-size: 2.5rem;
+    }
+
+    div.main-container div.banner div.left div.site-desc {
+        font-size: 1.1rem;
+    }
+
+    div.main-container div.banner div.left div.site-btn span {
+        font-size: 1.0rem;
+    }
+
+    div.article-info a div.title {
+        font-size: 1.4rem;
+    }
+
+    div.article-info a div.abstract {
+        font-size: 0.95rem;
+    }
+
+    div.article-info div.meta-data span.estimation {
+        display: none;
+    }
+
+    div.right div.author-box {
+        flex-direction: column;
+    }
+
+    div.right div.author-box > img {
+        width: 35%;
+        padding-left: 8%;
+        margin-bottom: 2vh;
+    }
+
+    div.right div.author-box > div > div.name {
+        font-size: 1.15rem;
+    }
+
+    div.right div.author-box > div > div.desc {
+        font-size: 0.9rem;
+    }
+
+    div.right div.author-box > div > div.contact > button {
+        font-size: 0.85rem;
+    }
+}
+
+@media screen and (max-width: 780px) {
+
+    div.main-container div.banner div.left div.site-title {
+        font-size: 2.0rem;
+    }
+
+    div.main-container div.banner div.left div.site-desc {
+        font-size: 1.0rem;
+    }
+
+    div.main-container div.banner div.left div.site-btn span {
+        font-size: 0.9rem;
+    }
+
+    div.main-container div.banner div.left div.site-btn span {
+        padding: 10px 20px;
+    }
+
+    div.sub-container div.right {
+        display: none;
+    }
+
+    div.sub-container div.left {
+        width: 100%;
+    }
+
+    div.left article {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+
+    div.main-container div.banner {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        height: 90vh;
+
+        padding: 12vh 5% 5%;
+    }
+
+    div.main-container div.banner div.left {
+        width: 80%;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0;
+        margin-bottom: 4vh;
+    }
+
+    div.main-container div.banner div.left div.site-title {
+        text-align: center;
+        margin-bottom: 12px;
+    }
+
+    div.main-container div.banner div.left div.site-desc {
+        text-align: center;
+        margin-bottom: 12px;
+        height: auto;
+    }
+
+    div.main-container div.banner div.left div.site-btn {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        height: 30%;
+    }
+
+    div.main-container div.banner div.left div.site-btn span {
+        padding: 10px 15vw;
+    }
+
+    div.main-container div.banner div.right {
+        width: 80%;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0;
+    }
+
+    .youtube-player {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    div.left article {
+        justify-content: center;
+        align-items: center;
+    }
+
+    div.left article div.article-info {
+        width: 60%;
+    }
+
+    div.left article a.img-anchor {
+        overflow: hidden;
+    }
+
+    div.left article a.img-anchor img {
+        min-height: 100%;
+        min-width: 100%;
+    }
+
+    div.article-info a div.title {
+        font-size: 1.2rem;
+    }
+
+    div.article-info a div.abstract {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    div.left article a.img-anchor {
+        width: 25%;
+    }
+
+    div.article-info a div.title {
+        font-size: 1.1rem;
+    }
+
+    div.article-info a div.abstract {
+        font-size: 0.85rem;
+    }
+
+    div.article-info div.meta-data {
+        font-size: 0.85rem;
+    }
+}
+
+
 </style>
 
 
@@ -573,6 +800,7 @@
     document.addEventListener('DOMContentLoaded', initYouTubeVideos);
 
     // calculate px of 1vh
+    /*
     var vhpx = window.outerHeight / 100;
     window.onscroll = function() {
 
@@ -603,6 +831,7 @@
             }
         }
     }
+    */
     
 
 </script>
