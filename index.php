@@ -732,8 +732,13 @@
         font-size: 0.8rem;
     }
 
+    div.left article {
+        height: auto;
+    }
+
     div.left article a.img-anchor {
-        width: 25%;
+        width: 90px;
+        height: 90px
     }
 
     div.article-info a div.title {
@@ -742,6 +747,7 @@
 
     div.article-info a div.abstract {
         font-size: 0.75rem;
+        margin-bottom: 10px;
     }
 
     div.article-info div.meta-data {
