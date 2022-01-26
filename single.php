@@ -271,6 +271,21 @@
         font-size: 1.0rem;
     }
 }
+
+@media screen and (max-width: 500px) {
+    div.middle-content section.current-post h1 {
+        letter-spacing: 0px;
+    }
+
+    div.middle-content section.current-post h2 {
+        letter-spacing: 0px;
+    }
+
+    div.middle-content section.current-post p, 
+    div.middle-content section.current-post li {
+        line-height: 29px;
+    }
+}
 </style>
 
 <script>
