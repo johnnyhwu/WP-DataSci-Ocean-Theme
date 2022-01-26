@@ -40,6 +40,7 @@
                 </div>
             </section>
 
+            <!-- 
             <div class="box-divider"></div>
 
             <section class="more-post">
@@ -51,6 +52,8 @@
             <section class="discussion">
                 DISCUSSION
             </section>
+            -->
+
         <?php endwhile; ?>
     </div>
 
@@ -64,7 +67,210 @@
 ?>
 
 <style>
-    
+
+    div.post-container {
+        /*background-color: cornsilk;*/
+        padding: 16vh 30px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+        div.left-sidebar {
+            background-color: darkgray;
+            width: 20%;
+            height: 75vh;
+
+            position: -webkit-sticky;
+            position: sticky;
+            top: 16vh;
+
+            display: none;
+            flex-direction: column;
+
+        }
+
+        div.right-sidebar {
+            background-color:darkkhaki;
+            width: 20%;
+            height: 75vh;
+
+            position: -webkit-sticky;
+            position: sticky;
+            top: 16vh;
+
+            display: none;
+            flex-direction: column;
+        }
+
+        div.middle-content {
+            /*background-color: darksalmon;*/
+            width: 700px;
+        }
+
+            div.middle-content section.current-post {
+                background-color: white;
+            }
+
+                div.middle-content section.current-post div.post-meta {
+                    /*background-color: aqua;*/
+                    width: 100%;
+
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                }
+
+                    div.middle-content section.current-post div.post-meta div.left {
+                        /*background-color: blanchedalmond;*/
+                        width: 70%;
+                    }
+                        div.middle-content section.current-post div.post-meta div.left span {
+                            color: #757575;
+                            opacity: 0.6;
+                            font-size: 1.05rem;
+                        }
+
+                    div.middle-content section.current-post div .post-meta div.right {
+                        /*background-color:chartreuse;*/
+                        width: 30%;
+                    }
+                
+                div.middle-content section.current-post div.post-tag {
+                    width: 100%;
+                    /*background-color: chocolate;*/
+                    margin-top: 7vh;
+                }
+
+                    div.middle-content section.current-post div.post-tag ul {
+                        margin: 0;
+                        padding: 0;
+                        list-style-type: none;
+
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: flex-start;
+                        align-items: flex-start;
+                    }
+
+                        div.middle-content section.current-post div.post-tag ul li.tag {
+                            font-size: 0.85rem;
+                            
+                            background-color: rgba(209, 203, 203, 0.3);
+
+                            margin-right: 15px;
+                            padding: 5px 15px;
+                            border-radius: 3px;
+                        }
+
+                            div.middle-content section.current-post div.post-tag ul li.tag a {
+                                text-decoration: none;
+                                color: #757575;
+                                border-width: 0px;
+                            }
+
+
+                div.middle-content section.current-post h1 {
+                    font-size: 2rem;
+                    letter-spacing: 2px;
+                }
+
+                div.middle-content section.current-post h2 {
+                    font-size: 1.5rem;
+                    letter-spacing: 1px;
+                    margin-block-start: 3rem;
+                    margin-block-end: 0.6rem;
+                }
+
+                div.middle-content section.current-post p, 
+                div.middle-content section.current-post li {
+                    font-size: 1.16rem;
+                    font-weight: 300;
+                    letter-spacing: 0.5px;
+                    line-height: 2.2rem;
+                }
+                    div.middle-content section.current-post p strong, 
+                    div.middle-content section.current-post li strong {
+                        font-weight: 500;
+                    }
+
+                    div.middle-content section.current-post p a, 
+                    div.middle-content section.current-post li a {
+                        text-decoration: none;
+                        color: black;
+
+                        border-bottom-style: solid;
+                        border-bottom-color: black;
+                        border-bottom-width: 2px;
+                    }
+                
+                div.middle-content section.current-post pre {
+                    background-color: rgba(242, 242, 242, 1);
+                    color: rgba(0, 0, 0, 0.753);
+                    font-size: 1.1rem;
+                    font-weight: 300;
+
+                    padding: 2vh 5%;
+                    margin: 4vh 0;
+
+                    overflow-x: scroll;
+                }
+
+                div.middle-content section.current-post pre::-webkit-scrollbar {
+                    display: none;
+                }
+
+                div.middle-content section.current-post div.wp-caption.aligncenter {
+                    width: 100% !important;
+                    margin: 3.5vh 0 5vh;
+                }
+
+                    div.middle-content section.current-post div.wp-caption.aligncenter img {
+                        width: 100%;
+                        height: auto;
+                    }
+
+                    div.middle-content section.current-post div.wp-caption.aligncenter p {
+                        color: #757575;
+                        opacity: 0.6;
+
+                        font-size: 0.9rem;
+                        text-align: center;
+
+                        margin: 0;
+                    }
+
+
+
+@media screen and (max-width: 720px) {
+    div.middle-content section.current-post h1 {
+        font-size: 1.9rem;
+    }
+
+    div.middle-content section.current-post div.post-meta div.left span {
+        font-size: 1rem;
+    }
+
+    div.middle-content section.current-post h2 {
+        font-size: 1.4rem;
+    }
+
+    div.middle-content section.current-post p, 
+    div.middle-content section.current-post li {
+        font-size: 1.06rem;
+    }
+
+    div.middle-content section.current-post div.wp-caption.aligncenter p {
+        font-size: 0.85rem;
+    }
+
+    div.middle-content section.current-post pre {
+        font-size: 1.0rem;
+    }
+}
 </style>
 
 <script>

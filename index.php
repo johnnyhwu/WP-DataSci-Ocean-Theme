@@ -53,30 +53,7 @@
 
                                 <div class="meta-data">
                                     <?php 
-                                        $cate = get_the_category($latest_posts[0]->ID)[0];
-                                        $cate_name = $cate->name;
-                                        $cate_link = get_category_link($cate->term_id);
-                                    ?>
-                                    <span class="date"><?php echo date("M j", strtotime($post->post_date)); ?></span><span class="estimation">．<?php echo get_field('estimated_time', $post->ID); ?> min read</span>．<span class="category"><a href="<?php echo $cate_link; ?>"><?php echo $cate_name; ?></a></span>
-                                </div>
-                            </div>
-
-                            <a class="img-anchor" href="<?php echo get_permalink($post->ID); ?>"><img src="<?php echo get_field('thumbnail', $post->ID)['sizes']['medium'] ?>" alt="article thumbnail"></a>
-                    </article>
-
-                    <article>
-                            <div class="article-info">
-                                <a href="<?php echo get_permalink($post->ID); ?>">
-                                    <div class="text">
-                                        <div class="title"><?php echo $post->post_title ?></div>
-                                        <div class="abstract"><?php echo get_field('abstract', $post->ID); ?></div>
-                                    </div>
-                                </a>
-                                
-
-                                <div class="meta-data">
-                                    <?php 
-                                        $cate = get_the_category($latest_posts[0]->ID)[0];
+                                        $cate = get_the_category($post->ID)[0];
                                         $cate_name = $cate->name;
                                         $cate_link = get_category_link($cate->term_id);
                                     ?>
@@ -215,6 +192,7 @@
                     }
 
                     div.main-container div.banner div.left div.site-btn span:hover {
+                        /*
                         background-color: #2ba4e3;
                         
                         color: white;
@@ -227,6 +205,7 @@
 
                         box-sizing: border-box;
                         padding: 12px 30px;
+                        */
                     }
 
             
@@ -383,10 +362,13 @@
                     display: block;
                     width: 30%;
                     height: 100%;
+
+                    overflow: hidden;
                 }
 
                     div.left article a.img-anchor img {
-                        height: 100%;
+                        min-height: 100%;
+                        min-width: 100%;
                     }
 
 
@@ -395,8 +377,9 @@
             height: 100%;
             /*background-color:chartreuse;*/
 
-            position: sticky;
             position: -webkit-sticky;
+            position: sticky;
+            
             top: 16vh;
 
             display: flex;
@@ -655,8 +638,6 @@
         justify-content: flex-start;
         align-items: center;
 
-        height: 90vh;
-
         padding: 12vh 5% 5%;
     }
 
@@ -733,20 +714,38 @@
 }
 
 @media screen and (max-width: 500px) {
+
+    div.main-container div.banner {
+        height: 600px;
+    }
+
+    div.main-container div.banner div.left div.site-title {
+        font-size: 1.8rem;
+    }
+
+    div.main-container div.banner div.left div.site-desc {
+        font-size: 0.8rem;
+    }
+
+    div.main-container div.banner div.left div.site-btn span {
+        padding: 10px 15vw;
+        font-size: 0.8rem;
+    }
+
     div.left article a.img-anchor {
         width: 25%;
     }
 
     div.article-info a div.title {
-        font-size: 1.1rem;
+        font-size: 0.85rem;
     }
 
     div.article-info a div.abstract {
-        font-size: 0.85rem;
+        font-size: 0.7rem;
     }
 
     div.article-info div.meta-data {
-        font-size: 0.85rem;
+        font-size: 0.7rem;
     }
 }
 
