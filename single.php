@@ -285,6 +285,10 @@
     div.middle-content section.current-post li {
         line-height: 29px;
     }
+
+    div.middle-content section.current-post pre {
+        font-size: 1.06rem;
+    }
 }
 </style>
 
