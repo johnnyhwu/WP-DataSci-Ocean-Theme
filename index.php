@@ -737,15 +737,15 @@
     }
 
     div.article-info a div.title {
-        font-size: 0.85rem;
+        font-size: 0.88rem;
     }
 
     div.article-info a div.abstract {
-        font-size: 0.7rem;
+        font-size: 0.75rem;
     }
 
     div.article-info div.meta-data {
-        font-size: 0.7rem;
+        font-size: 0.75rem;
     }
 }
 
