@@ -638,6 +638,7 @@
         justify-content: flex-start;
         align-items: center;
 
+        height: 700px;
         padding: 12vh 5% 5%;
     }
 
