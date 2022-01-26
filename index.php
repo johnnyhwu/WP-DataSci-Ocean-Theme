@@ -720,16 +720,16 @@
     }
 
     div.main-container div.banner div.left div.site-title {
-        font-size: 1.8rem;
+        font-size: 1.95rem;
     }
 
     div.main-container div.banner div.left div.site-desc {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
     }
 
     div.main-container div.banner div.left div.site-btn span {
         padding: 10px 15vw;
-        font-size: 0.8rem;
+        font-size: 0.85rem;
     }
 
     div.left article {
@@ -737,21 +737,21 @@
     }
 
     div.left article a.img-anchor {
-        width: 90px;
-        height: 90px
+        width: 100px;
+        height: 100px
     }
 
     div.article-info a div.title {
-        font-size: 0.88rem;
+        font-size: 0.91rem;
     }
 
     div.article-info a div.abstract {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
         margin-bottom: 10px;
     }
 
     div.article-info div.meta-data {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
     }
 }
 
