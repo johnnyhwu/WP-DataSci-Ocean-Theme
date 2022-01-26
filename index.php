@@ -359,7 +359,7 @@
                         }
 
                 div.left article a.img-anchor {
-                    display: block;
+                    display: flex;
                     width: 30%;
                     height: 100%;
 
