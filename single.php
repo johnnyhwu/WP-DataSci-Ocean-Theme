@@ -154,6 +154,9 @@
                         flex-direction: row;
                         justify-content: flex-start;
                         align-items: flex-start;
+                        flex-wrap: wrap;
+
+                        margin-bottom: 15px;
                     }
 
                         div.middle-content section.current-post div.post-tag ul li.tag {
@@ -162,7 +165,7 @@
                             background-color: rgba(209, 203, 203, 0.3);
 
                             margin-right: 15px;
-                            padding: 5px 15px;
+                            padding: 0px 15px;
                             border-radius: 3px;
                         }
 
