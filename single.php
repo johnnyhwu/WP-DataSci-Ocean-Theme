@@ -155,8 +155,6 @@
                         justify-content: flex-start;
                         align-items: flex-start;
                         flex-wrap: wrap;
-
-                        margin-bottom: 15px;
                     }
 
                         div.middle-content section.current-post div.post-tag ul li.tag {
@@ -167,6 +165,8 @@
                             margin-right: 15px;
                             padding: 0px 15px;
                             border-radius: 3px;
+
+                            margin-bottom: 15px;
                         }
 
                             div.middle-content section.current-post div.post-tag ul li.tag a {
