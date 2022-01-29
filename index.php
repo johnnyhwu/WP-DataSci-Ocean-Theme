@@ -110,7 +110,7 @@
 <style>
     div.main-container div.banner {
         width: 100%;
-        height: 55vh;
+        height: 500px;
         background-color: #2ba4e3;
 
         box-sizing: border-box;
@@ -142,7 +142,7 @@
                 width: 100%;
                 /*background-color: violet;*/
 
-                font-size: 3rem;
+                font-size: 2.8rem;
                 font-weight: bold;
                 color: white;
             }
@@ -152,7 +152,7 @@
                 width: 100%;
                 /*background-color:yellow;*/
 
-                font-size: 1.2rem;
+                font-size: 1.15rem;
                 color: white;
             }
 
@@ -290,6 +290,7 @@
                 align-items: flex-start;
 
                 margin-bottom: 6vh;
+                min-height: 130px;
             }
 
                 div.left article div.article-info {
@@ -321,7 +322,7 @@
                                 width: 100%;
                                 
                                 color: black;
-                                font-size: 1.6rem;
+                                font-size: 1.4rem;
                                 font-weight: bold;
 
                                 margin-bottom: 5px;
@@ -534,7 +535,7 @@
     }
 
     div.article-info a div.title {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 
     div.article-info a div.abstract {
@@ -565,7 +566,7 @@
     }
 
     div.article-info a div.title {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
 
     div.article-info a div.abstract {
@@ -603,10 +604,16 @@
 
     div.main-container div.banner div.left div.site-title {
         font-size: 2.0rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
     }
 
     div.main-container div.banner div.left div.site-desc {
         font-size: 1.0rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     div.main-container div.banner div.left div.site-btn span {

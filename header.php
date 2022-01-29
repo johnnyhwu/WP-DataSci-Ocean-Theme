@@ -65,6 +65,7 @@
         
         width: 100%;
         height: 9vh;
+        min-height: 60px;
 
         background-color: #2ba4e3;
         transition: background-color 0.3s linear;
