@@ -746,7 +746,7 @@
     }
 
     div.left article a.img-anchor {
-        width: 100px;
+        width: 130px;
         height: 100px
     }
 
