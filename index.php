@@ -322,7 +322,7 @@
                                 width: 100%;
                                 
                                 color: black;
-                                font-size: 1.4rem;
+                                font-size: 1.3rem;
                                 font-weight: bold;
 
                                 margin-bottom: 5px;
@@ -535,7 +535,7 @@
     }
 
     div.article-info a div.title {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
 
     div.article-info a div.abstract {
@@ -742,6 +742,7 @@
 
     div.left article {
         height: auto;
+        margin-bottom: 15px
     }
 
     div.left article a.img-anchor {
