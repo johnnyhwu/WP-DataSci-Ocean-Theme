@@ -2,13 +2,28 @@
 <html <?php language_attributes(); ?>>
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
-
-    <!-- <link rel="shortcut icon" href="https://web.ics.nycu.edu.tw/wp-content/uploads/2021/12/favicon.jpeg"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <link 
+        rel="preload" 
+        as="style" 
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
+        onload="this.onload=null; this.rel='stylesheet'"
+    >
+
+    <noscript>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
+            rel="stylesheet"
+            type="text/css"
+        />
+    </noscript>
+
+    <!-- <link rel="shortcut icon" href="https://web.ics.nycu.edu.tw/wp-content/uploads/2021/12/favicon.jpeg"> -->
+    
     
     <title>
         <?php 
