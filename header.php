@@ -280,4 +280,4 @@
 }
 </style>
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4670030831550253" crossorigin="anonymous"></script>
+<script defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4670030831550253" crossorigin="anonymous"></script>
