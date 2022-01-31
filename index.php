@@ -811,5 +811,5 @@
         }
     }
 
-    document.addEventListener('DOMContentLoaded', initYouTubeVideos);
+    // document.addEventListener('DOMContentLoaded', initYouTubeVideos);
 </script>
