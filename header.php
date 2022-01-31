@@ -310,5 +310,7 @@
         setTimeout(function insertGoogleADsScript() {
             body.appendChild(script);
         }, 5000);
+
+        initYouTubeVideos();
     }    
 </script>
