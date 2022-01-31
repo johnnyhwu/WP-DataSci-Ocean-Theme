@@ -280,4 +280,20 @@
 }
 </style>
 
-<script defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4670030831550253" crossorigin="anonymous"></script>
+<script>
+
+    window.onload = function insertGoogleADs() {
+        // create google ads script after whole page is loaded for 5 seconds
+        var script = document.createElement('script');
+        script.async = true;
+        script.type = 'text/javascript';
+        script.crossorigin = "anonymous";
+        script.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4670030831550253';
+
+        var body = document.querySelector('body');
+
+        setTimeout(function insertGoogleADsScript() {
+            body.appendChild(script);
+        }, 5000);
+    }    
+</script>

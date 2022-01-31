@@ -775,77 +775,41 @@
     */
 
     function labnolIframe(div) {
-    var iframe = document.createElement('iframe');
-    iframe.setAttribute(
-        'src',
-        'https://www.youtube.com/embed/' + div.dataset.id + '?autoplay=1&rel=0'
-    );
-    iframe.setAttribute('frameborder', '0');
-    iframe.setAttribute('allowfullscreen', '1');
-    iframe.setAttribute(
-        'allow',
-        'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-    );
-    div.parentNode.replaceChild(iframe, div);
+        var iframe = document.createElement('iframe');
+        iframe.setAttribute(
+            'src',
+            'https://www.youtube.com/embed/' + div.dataset.id + '?autoplay=1&rel=0'
+        );
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allowfullscreen', '1');
+        iframe.setAttribute(
+            'allow',
+            'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+        );
+        div.parentNode.replaceChild(iframe, div);
     }
 
     function initYouTubeVideos() {
-    var playerElements = document.getElementsByClassName('youtube-player');
-    for (var n = 0; n < playerElements.length; n++) {
-        var videoId = playerElements[n].dataset.id;
-        var div = document.createElement('div');
-        div.setAttribute('data-id', videoId);
-        var thumbNode = document.createElement('img');
-        thumbNode.src = '//i.ytimg.com/vi/ID/hqdefault.jpg'.replace(
-        'ID',
-        videoId
-        );
-        div.appendChild(thumbNode);
-        var playButton = document.createElement('div');
-        playButton.setAttribute('class', 'play');
-        div.appendChild(playButton);
-        div.onclick = function () {
-        labnolIframe(this);
-        };
-        playerElements[n].appendChild(div);
-    }
+        var playerElements = document.getElementsByClassName('youtube-player');
+        for (var n = 0; n < playerElements.length; n++) {
+            var videoId = playerElements[n].dataset.id;
+            var div = document.createElement('div');
+            div.setAttribute('data-id', videoId);
+            var thumbNode = document.createElement('img');
+            thumbNode.src = '//i.ytimg.com/vi/ID/hqdefault.jpg'.replace(
+            'ID',
+            videoId
+            );
+            div.appendChild(thumbNode);
+            var playButton = document.createElement('div');
+            playButton.setAttribute('class', 'play');
+            div.appendChild(playButton);
+            div.onclick = function () {
+            labnolIframe(this);
+            };
+            playerElements[n].appendChild(div);
+        }
     }
 
     document.addEventListener('DOMContentLoaded', initYouTubeVideos);
-
-    // calculate px of 1vh
-    /*
-    var vhpx = window.outerHeight / 100;
-    window.onscroll = function() {
-
-        headerEmt = document.querySelector('header');
-        navTextEmts = document.querySelectorAll('header div.site-nav div ul li a');
-        mobBurgerEmts = document.querySelectorAll("div.site-nav-mobile-burger span");
-
-        if(window.scrollY > 45 * vhpx) {
-            headerEmt.style.backgroundColor = 'white';
-
-            for(let idx=0; idx<navTextEmts.length; idx++) {
-                navTextEmts[idx].style.color = '#2ba4e3';
-
-                mobBurgerEmts[0].style.background = '#2ba4e3';
-                mobBurgerEmts[1].style.background = '#2ba4e3';
-                mobBurgerEmts[2].style.background = '#2ba4e3';
-            }
-            
-        } else {
-            headerEmt.style.backgroundColor = '#2ba4e3';
-
-            for(let idx=0; idx<navTextEmts.length; idx++) {
-                navTextEmts[idx].style.color = 'white';
-
-                mobBurgerEmts[0].style.background = 'white';
-                mobBurgerEmts[1].style.background = 'white';
-                mobBurgerEmts[2].style.background = 'white';
-            }
-        }
-    }
-    */
-    
-
 </script>
