@@ -1,15 +1,21 @@
 <?php
     get_header();
+    $cat_obj = get_queried_object();
 ?>
 
 <div class="main-container">
+
+    <div class="title-container">
+        <?php echo $cat_obj->name; ?>
+    </div>
 
     <div class="sub-container">
         <div class="left">
 
             <?php
                 $args = array(
-                    'numberposts' => -1
+                    'numberposts' => -1,
+                    'category' => $cat_obj->term_id
                 );
                 
                 $latest_posts = get_posts($args);
@@ -81,6 +87,23 @@
 </div>
 
 <style>
+
+div.main-container div.title-container {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1.5% 18%;
+
+    margin-top: max(60px, 11vh);
+
+    color: black;
+    font-size: 1.7rem;
+    font-weight: bold;
+
+    border-bottom-color: rgba(117, 117, 117, 0.3);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
     div.main-container div.sub-container {
         width: 100%;
         /*height: 70vh;*/
@@ -93,7 +116,7 @@
         justify-content: flex-start;
         align-items: flex-start;
 
-        margin-top: 5vh;
+        margin-top: 10px;
     }
 
         div.sub-container div.left {
@@ -341,6 +364,11 @@
 
 @media screen and (max-width: 1200px) {
 
+    div.main-container div.title-container {
+        padding: 2% 10%;
+        font-size: 1.5rem;
+    }
+
     div.main-container div.sub-container {
         padding: 2% 10%;
     }
@@ -355,6 +383,12 @@
 }
 
 @media screen and (max-width: 992px) {
+
+    div.main-container div.title-container {
+        padding: 2% 5%;
+        padding-bottom: max(2%, 18px);
+        font-size: 1.5rem;
+    }
 
     div.main-container div.sub-container {
         padding: 2% 5%;
@@ -413,6 +447,10 @@
 
 @media screen and (max-width: 700px) {
 
+    div.main-container div.title-container {
+        font-size: 1.4rem;
+    }
+
     div.left article {
         justify-content: center;
         align-items: center;
@@ -441,6 +479,10 @@
 }
 
 @media screen and (max-width: 500px) {
+
+    div.main-container div.title-container {
+        font-size: 1.2rem;
+    }
 
     div.left article {
         height: auto;
