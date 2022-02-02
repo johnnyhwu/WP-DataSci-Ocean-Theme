@@ -387,6 +387,7 @@ div.main-container div.title-container {
     div.main-container div.title-container {
         padding: 2% 5%;
         padding-bottom: max(2%, 18px);
+        padding-top: max(2%, 18px);
         font-size: 1.5rem;
     }
 
