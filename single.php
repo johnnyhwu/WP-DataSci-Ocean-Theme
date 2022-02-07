@@ -220,8 +220,6 @@
                     padding: 2vh 5%;
                     margin: 4vh 0;
 
-                    width: 100%;
-
                     overflow-x: scroll;
                 }
 
@@ -294,6 +292,7 @@
 
     div.middle-content section.current-post pre {
         font-size: 1.06rem;
+        max-width: 85vw;
     }
 }
 </style>
