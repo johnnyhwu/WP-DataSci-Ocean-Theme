@@ -249,7 +249,7 @@
             
             section.discussion {
                 margin-top: 7vh;
-                background: orange;
+                background: white;
             }
 
                 section.discussion div#disqus_thread {
@@ -321,7 +321,7 @@
                 s.setAttribute('data-timestamp', +new Date());
                 (d.head || d.body).appendChild(s);
             })();
-        }, 3000);
+        }, 3500);
 
     }
 </script>
