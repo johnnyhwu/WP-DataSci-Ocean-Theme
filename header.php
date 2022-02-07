@@ -310,7 +310,7 @@
         // insert ins element into home page after whole page is loaded for 5 seconds
         var ins = document.createElement('ins');
         ins.className = 'adsbygoogle';
-        ins.style = "display:block";
+        ins.style = "display:block; width: 100%";
         ins.setAttribute("data-ad-client", "ca-pub-4670030831550253");
         ins.setAttribute("data-ad-slot", "9186630544");
         ins.setAttribute("data-ad-format", "auto");
@@ -322,11 +322,12 @@
             body.appendChild(script);
 
             for(let i=0; i<adBoxs.length; i++) {
-                adBoxs[i].appendChild(ins);
+                adBoxs[i].appendChild(ins.cloneNode(true));
+                (adsbygoogle = window.adsbygoogle || []).push({});
             }
         }, 5000);
 
-        (adsbygoogle = window.adsbygoogle || []).push({});
+        
 
         initYouTubeVideos();
     }    
