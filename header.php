@@ -322,7 +322,7 @@
             body.appendChild(script);
 
             for(let i=0; i<adBoxs.length; i++) {
-                adBoxs.appendChild(ins);
+                adBoxs[i].appendChild(ins);
                 (adsbygoogle = window.adsbygoogle || []).push({});
             }
         }, 5000);
