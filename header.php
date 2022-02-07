@@ -322,6 +322,9 @@
             body.appendChild(script);
 
             for(let i=0; i<adBoxs.length; i++) {
+                adBoxs[i].innerHTML = '';
+                adBoxs[i].style.backgroundColor = 'white';
+                adBoxs[i].style.opacity = '1.0';
                 adBoxs[i].appendChild(ins.cloneNode(true));
                 (adsbygoogle = window.adsbygoogle || []).push({});
             }
