@@ -323,9 +323,10 @@
 
             for(let i=0; i<adBoxs.length; i++) {
                 adBoxs[i].appendChild(ins);
-                (adsbygoogle = window.adsbygoogle || []).push({});
             }
         }, 5000);
+
+        (adsbygoogle = window.adsbygoogle || []).push({});
 
         initYouTubeVideos();
     }    
