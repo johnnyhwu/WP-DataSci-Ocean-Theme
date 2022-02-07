@@ -216,6 +216,7 @@
                     font-size: 1.1rem;
                     font-weight: 300;
 
+                    box-sizing: border-box;
                     padding: 2vh 5%;
                     margin: 4vh 0;
 
