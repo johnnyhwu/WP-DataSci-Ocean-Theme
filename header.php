@@ -307,8 +307,24 @@
 
         var body = document.querySelector('body');
 
+        // insert ins element into home page after whole page is loaded for 5 seconds
+        var ins = document.createElement('ins');
+        ins.className = 'adsbygoogle';
+        ins.style = "display:block";
+        ins.setAttribute("data-ad-client", "ca-pub-4670030831550253");
+        ins.setAttribute("data-ad-slot", "9186630544");
+        ins.setAttribute("data-ad-format", "auto");
+        ins.setAttribute("data-full-width-responsive", "true");
+
+        var adBoxs = document.querySelectorAll('div.ad-box div');
+
         setTimeout(function insertGoogleADsScript() {
             body.appendChild(script);
+
+            for(let i=0; i<adBoxs.length; i++) {
+                adBoxs.appendChild(ins);
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            }
         }, 5000);
 
         initYouTubeVideos();
