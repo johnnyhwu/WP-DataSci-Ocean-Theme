@@ -220,6 +220,8 @@
                     padding: 2vh 5%;
                     margin: 4vh 0;
 
+                    width: 100%;
+
                     overflow-x: scroll;
                 }
 
