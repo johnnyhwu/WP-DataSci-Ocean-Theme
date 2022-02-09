@@ -11,15 +11,29 @@ register_nav_menus(
 /* enqueue css style to specific page*/
 function import_css() {
     wp_enqueue_style('style', get_stylesheet_uri());
-    
-    /*
-    if(is_front_page()) {
-        wp_enqueue_style('home-news', get_template_directory_uri().'/assets/css/home-news.css');
-        wp_enqueue_style('home-carousel', get_template_directory_uri().'/assets/css/home-carousel.css');
-    } elseif(is_page(array('regulation', 'external', 'download'))) {
-        wp_enqueue_style('administrative-page', get_template_directory_uri().'/assets/css/administrative-page.css');
-    }*/
 }
 add_action('wp_enqueue_scripts', 'import_css');
+
+
+/* add custom post type */
+function add_tool_post_type() {
+
+    $args = array(
+        'labels' => array(
+            'name' => 'Tools',
+            'singular_name' => 'Tool'
+        ),
+
+        'hierarchical' => FALSE,
+        'public' => TRUE,
+        'has_archive' => FALSE,
+        'menu_icon' => 'dashicons-admin-tools',
+        'supports' => array('title', 'editor'),
+        'taxonomies' => array('category', 'post_tag')
+    );
+    register_post_type('tools', $args);
+}
+add_action('init', 'add_tool_post_type');
+
 
 ?>
