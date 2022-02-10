@@ -33,7 +33,8 @@
 
             <?php
                 $args = array(
-                    'numberposts' => -1
+                    'numberposts' => -1,
+                    'post_type' => 'any'
                 );
                 
                 $latest_posts = get_posts($args);

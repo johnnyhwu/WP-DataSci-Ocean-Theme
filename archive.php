@@ -15,7 +15,8 @@
             <?php
                 $args = array(
                     'numberposts' => -1,
-                    'category' => $cat_obj->term_id
+                    'category' => $cat_obj->term_id,
+                    'post_type' => 'any'
                 );
                 
                 $latest_posts = get_posts($args);

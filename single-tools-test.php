@@ -309,6 +309,7 @@
 <script>
     window.onload = function singlePostLoaded() {
 
+        // load DISQUS
         setTimeout(function loadDisqus() {
             var disqus_config = function () {
                 this.page.url = "<?php echo get_permalink(); ?>";  // Replace PAGE_URL with your page's canonical URL variable
@@ -323,5 +324,209 @@
             })();
         }, 3500);
 
+
+
+
+
+        var allArticlesHash = [];
+        var username_input = 'johnnymnotes';
+        var options = {
+            "method": "post",
+            "headers": {
+            "Content-Type": "application/json"  
+            },
+            "body": JSON.stringify({
+                "query": prepareQuery1(username_input, '')
+            }),
+        };
+
+        function prepareQuery1(username, after) {
+            let query = `
+                query {
+                    user(
+                        input: {
+                        userName: "${username}"
+                        }
+                    ) {
+                        displayName
+                        articles(
+                        input: {
+                            after: "${after}"
+                        }
+                        ) {
+                        totalCount
+                        edges {
+                            cursor
+                            node {
+                            title
+                            mediaHash
+                            }
+                        }
+                        }
+                    }
+                }
+            `;
+
+            return query;
+        }
+
+
+        function extractResult(res) {
+
+            if(res['totalCount'] == 0) {
+                console.log("This user doesn't have any article.");
+                return [];
+            }
+
+            let arr = [];
+            res['edges'].forEach(function(edge) {
+                arr.push(edge['node']['mediaHash']);
+            });
+            return arr;
+        }
+
+        async function parseResult(res) {
+
+            if(res['data']['user'] == null) {
+                console.log('Invalid Username !')
+                return;
+            }
+
+            allArticlesHash = [];
+            allArticlesHash = allArticlesHash.concat(extractResult(res['data']['user']['articles']));
+
+            let originLength = allArticlesHash.length;
+            let lastEdge = res['data']['user']['articles']['edges'].at(-1);
+            while(true) {
+                let after = lastEdge['cursor'];
+                options = {
+                    "method": "post",
+                    "headers": {
+                    "Content-Type": "application/json"  
+                    },
+                    "body": JSON.stringify({
+                        "query": prepareQuery1(username_input, after)
+                    }),
+                };
+
+                let res = await fetch('https://server.matters.news/graphql/', options);
+                res = await res.json();
+                allArticlesHash = allArticlesHash.concat(extractResult(res['data']['user']['articles']));
+
+                if(allArticlesHash.length == originLength) {
+                    break;
+                } else {
+                    originLength = allArticlesHash.length;
+                }
+            }
+        }
+
+        function prepareQuery2(mediaHash, after) {
+            let query = `
+                query {
+                    article(
+                        input: {
+                            mediaHash: "${mediaHash}"
+                        }
+                    ) {
+                        id
+                        title
+                        appreciationsReceivedTotal
+                        appreciationsReceived(
+                            input: {
+                                after: "${after}"
+                            }
+                        ) {
+                            totalCount
+                            edges {
+                                cursor
+                                node {
+                                    amount
+                                    sender {
+                                        likerId
+                                        displayName
+                                        userName
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            `;
+
+            return query;
+        }
+
+        async function fetchEachArticleAppreciateHepler(obj, mediaHash, after) {
+            options = {
+                "method": "post",
+                "headers": {
+                "Content-Type": "application/json"  
+                },
+                "body": JSON.stringify({
+                    "query": prepareQuery2(mediaHash, after)
+                }),
+            };
+
+            let res = await fetch('https://server.matters.news/graphql/', options);
+            res = await res.json();
+            edges = res['data']['article']['appreciationsReceived']['edges'];
+            
+            if(edges.length == 0){
+                return '';
+            }
+
+            edges.forEach(function (edge) {
+                let sender = edge['node']['sender']['displayName'];
+                let amount = edge['node']['amount'];
+
+                if(sender in obj.count) {
+                    obj.count[sender] += amount;
+                } else {
+                    obj.count[sender] = amount;
+                }
+            });
+
+            let lastEdge = edges.at(-1);
+            return lastEdge['cursor'];
+        }
+
+        async function fetchEachArticleAppreciate(obj, mediaHash, after) {
+            let cursor = after;
+
+            while(true) {
+                cursor = await fetchEachArticleAppreciateHepler(obj, mediaHash, cursor);
+                if(cursor == '') {
+                    break;
+                }
+            }
+        }
+
+        async function fetchAllArticleAppreciate() {
+            console.log(`Total Article Number: ${allArticlesHash.length}`);
+
+            let appreciateCount = {
+                count: {}
+            };
+
+            allArticlesHash.forEach(function(mediaHash) {
+                fetchEachArticleAppreciate(appreciateCount, mediaHash, '');
+            });
+
+            // sort result
+            let items = Object.keys(appreciateCount.count).map(function(key) {
+                console.log(key);
+                return [key, appreciateCount.count[key]]
+            });
+
+            console.log(typeof appreciateCount.count);
+        }
+
+        fetch('https://server.matters.news/graphql/', options)
+            .then(res => res.json())
+            .then(parseResult)
+            .then(fetchAllArticleAppreciate);
+
+        
     }
 </script>
