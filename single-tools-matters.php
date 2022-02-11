@@ -442,7 +442,6 @@
             
             var options = {
                 "method": "post",
-                'credentials': 'include',
                 "headers": {
                 "Content-Type": "application/json"  
                 },
