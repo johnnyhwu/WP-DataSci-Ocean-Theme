@@ -27,6 +27,15 @@
 
                 <?php the_content(); ?>
 
+                <div class="input-container">
+                    <input type="text" name="username" id="input-username" placeholder="Matters Username">
+                    <button onclick="buttonClicked('like')">誰是粉絲</button>
+                </div>
+
+                <div class="canvas-container">
+                    <canvas id="most-like-chart"></canvas>
+                </div>
+
                 <div class="post-tag">
 
                     <?php $tag_arr = get_the_tags(); ?>
@@ -246,6 +255,44 @@
 
                         margin: 0;
                     }
+
+                div.middle-content section.current-post div.canvas-container {
+                    width: 100% !important;
+                    margin: 3.5vh 0 5vh;
+                }
+
+                div.input-container {
+                    width: 100% !important;
+                    margin: 3.5vh 0 5vh;
+                }
+
+                    div.input-container input {
+                        height: 5vh;
+                        width: 60%;
+                        font-size: 0.9rem;
+                        font-family: 'Noto Sans TC', sans-serif;
+                        box-sizing: border-box;
+                        padding: 10px 20px;
+                        border-radius: 8px;
+                        border-color: gray;
+                        border-width: 1px;
+                        margin-right: 12%;
+                    }
+
+                    div.input-container button {
+                        height: 5vh;
+                        width: 20%;
+                        font-size: 0.9rem;
+                        font-family: 'Noto Sans TC', sans-serif;
+                        box-sizing: border-box;
+                        padding: 5px 20px;
+                        border-radius: 8px;
+                        border-color: gray;
+                        border-width: 1px;
+                        cursor: pointer;
+                    }
+
+
             
             section.discussion {
                 margin-top: 7vh;
@@ -283,6 +330,16 @@
     div.middle-content section.current-post pre {
         font-size: 1.0rem;
     }
+
+    div.input-container input {
+        margin-right: 10%;
+    }
+
+    div.input-container button {
+        width: 22%;
+        padding: 5px 5px;
+
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -303,8 +360,20 @@
         font-size: 1.06rem;
         max-width: 85vw;
     }
+
+    div.input-container input {
+        margin-right: 5%;
+    }
+
+    div.input-container button {
+        width: 25%;
+        padding: 5px 3px;
+
+    }
 }
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
     window.onload = function singlePostLoaded() {
@@ -323,210 +392,260 @@
                 (d.head || d.body).appendChild(s);
             })();
         }, 3500);
+    }
+</script>
 
+<script>
 
+    var allArticlesHash;
+    var username_input;
 
+    // find my big fans on matters and display as chart
+    var defaultData = {
+        labels: [],
+        datasets: [{
+        label: '粉絲',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [],
+        }]
+    };
 
+    var config1 = {
+        type: 'bar',
+        data: defaultData,
+        options: {}
+    };
 
-        var allArticlesHash = [];
-        var username_input = 'johnnymnotes';
-        var options = {
-            "method": "post",
-            "headers": {
-            "Content-Type": "application/json"  
-            },
-            "body": JSON.stringify({
-                "query": prepareQuery1(username_input, '')
-            }),
-        };
+    var chart1 = new Chart(
+        document.getElementById('most-like-chart'),
+        config1
+    );
 
-        function prepareQuery1(username, after) {
-            let query = `
-                query {
-                    user(
-                        input: {
-                        userName: "${username}"
-                        }
-                    ) {
-                        displayName
-                        articles(
-                        input: {
-                            after: "${after}"
-                        }
-                        ) {
-                        totalCount
-                        edges {
-                            cursor
-                            node {
-                            title
-                            mediaHash
-                            }
-                        }
-                        }
-                    }
-                }
-            `;
+    function buttonClicked(flag) {
 
-            return query;
-        }
-
-
-        function extractResult(res) {
-
-            if(res['totalCount'] == 0) {
-                console.log("This user doesn't have any article.");
-                return [];
-            }
-
-            let arr = [];
-            res['edges'].forEach(function(edge) {
-                arr.push(edge['node']['mediaHash']);
-            });
-            return arr;
-        }
-
-        async function parseResult(res) {
-
-            if(res['data']['user'] == null) {
-                console.log('Invalid Username !')
-                return;
-            }
+        if(flag == 'like') {
 
             allArticlesHash = [];
-            allArticlesHash = allArticlesHash.concat(extractResult(res['data']['user']['articles']));
+            username_input = document.querySelector('#input-username').value;
+            
+            var options = {
+                "method": "post",
+                "headers": {
+                "Content-Type": "application/json"  
+                },
+                "body": JSON.stringify({
+                    "query": prepareQuery1(username_input, '')
+                }),
+            };
 
-            let originLength = allArticlesHash.length;
-            let lastEdge = res['data']['user']['articles']['edges'].at(-1);
-            while(true) {
-                let after = lastEdge['cursor'];
-                options = {
-                    "method": "post",
-                    "headers": {
-                    "Content-Type": "application/json"  
-                    },
-                    "body": JSON.stringify({
-                        "query": prepareQuery1(username_input, after)
-                    }),
-                };
-
-                let res = await fetch('https://server.matters.news/graphql/', options);
-                res = await res.json();
-                allArticlesHash = allArticlesHash.concat(extractResult(res['data']['user']['articles']));
-
-                if(allArticlesHash.length == originLength) {
-                    break;
-                } else {
-                    originLength = allArticlesHash.length;
-                }
-            }
+            fetch('https://server.matters.news/graphql/', options)
+                .then(res => res.json())
+                .then(parseResult)
+                .then(fetchAllArticleAppreciate)
+                .then(drawChart1);
         }
 
-        function prepareQuery2(mediaHash, after) {
-            let query = `
-                query {
-                    article(
-                        input: {
-                            mediaHash: "${mediaHash}"
-                        }
+    }
+
+    function drawChart1(fans) {
+        let items = fans.slice(0, 5);
+        let labels = [];
+        let values = [];
+
+        items.forEach(function(item) {
+            labels.push(item[0]);
+            values.push(item[1]);
+        });
+
+        // update chart1
+        chart1.data.labels = labels;
+        chart1.data.datasets[0].data = values;
+        chart1.update();
+    }
+
+    function prepareQuery1(username, after) {
+        let query = `
+            query {
+                user(
+                    input: {
+                    userName: "${username}"
+                    }
+                ) {
+                    displayName
+                    articles(
+                    input: {
+                        after: "${after}"
+                    }
                     ) {
-                        id
+                    totalCount
+                    edges {
+                        cursor
+                        node {
                         title
-                        appreciationsReceivedTotal
-                        appreciationsReceived(
-                            input: {
-                                after: "${after}"
-                            }
-                        ) {
-                            totalCount
-                            edges {
-                                cursor
-                                node {
-                                    amount
-                                    sender {
-                                        likerId
-                                        displayName
-                                        userName
-                                    }
-                                }
-                            }
+                        mediaHash
                         }
                     }
+                    }
                 }
-            `;
+            }
+        `;
 
-            return query;
+        return query;
+    }
+
+
+    function extractResult(res) {
+
+        if(res['totalCount'] == 0) {
+            console.log("This user doesn't have any article.");
+            return [];
         }
 
-        async function fetchEachArticleAppreciateHepler(obj, mediaHash, after) {
+        let arr = [];
+        res['edges'].forEach(function(edge) {
+            arr.push(edge['node']['mediaHash']);
+        });
+        return arr;
+    }
+
+    async function parseResult(res) {
+
+        if(res['data']['user'] == null) {
+            console.log('Invalid Username !')
+            return;
+        }
+
+        allArticlesHash = [];
+        allArticlesHash = allArticlesHash.concat(extractResult(res['data']['user']['articles']));
+
+        let originLength = allArticlesHash.length;
+        let lastEdge = res['data']['user']['articles']['edges'].at(-1);
+        while(true) {
+            let after = lastEdge['cursor'];
             options = {
                 "method": "post",
                 "headers": {
                 "Content-Type": "application/json"  
                 },
                 "body": JSON.stringify({
-                    "query": prepareQuery2(mediaHash, after)
+                    "query": prepareQuery1(username_input, after)
                 }),
             };
 
             let res = await fetch('https://server.matters.news/graphql/', options);
             res = await res.json();
-            edges = res['data']['article']['appreciationsReceived']['edges'];
-            
-            if(edges.length == 0){
-                return '';
-            }
+            allArticlesHash = allArticlesHash.concat(extractResult(res['data']['user']['articles']));
 
-            edges.forEach(function (edge) {
-                let sender = edge['node']['sender']['displayName'];
-                let amount = edge['node']['amount'];
-
-                if(sender in obj.count) {
-                    obj.count[sender] += amount;
-                } else {
-                    obj.count[sender] = amount;
-                }
-            });
-
-            let lastEdge = edges.at(-1);
-            return lastEdge['cursor'];
-        }
-
-        async function fetchEachArticleAppreciate(obj, mediaHash, after) {
-            let cursor = after;
-
-            while(true) {
-                cursor = await fetchEachArticleAppreciateHepler(obj, mediaHash, cursor);
-                if(cursor == '') {
-                    break;
-                }
+            if(allArticlesHash.length == originLength) {
+                break;
+            } else {
+                originLength = allArticlesHash.length;
             }
         }
+    }
 
-        async function fetchAllArticleAppreciate() {
-            console.log(`Total Article Number: ${allArticlesHash.length}`);
+    function prepareQuery2(mediaHash, after) {
+        let query = `
+            query {
+                article(
+                    input: {
+                        mediaHash: "${mediaHash}"
+                    }
+                ) {
+                    id
+                    title
+                    appreciationsReceivedTotal
+                    appreciationsReceived(
+                        input: {
+                            after: "${after}"
+                        }
+                    ) {
+                        totalCount
+                        edges {
+                            cursor
+                            node {
+                                amount
+                                sender {
+                                    likerId
+                                    displayName
+                                    userName
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        `;
 
-            let appreciateCount = {
-                count: {}
-            };
+        return query;
+    }
 
-            allArticlesHash.forEach(function(mediaHash) {
-                fetchEachArticleAppreciate(appreciateCount, mediaHash, '');
-            });
+    async function fetchEachArticleAppreciateHepler(obj, mediaHash, after) {
+        options = {
+            "method": "post",
+            "headers": {
+            "Content-Type": "application/json"  
+            },
+            "body": JSON.stringify({
+                "query": prepareQuery2(mediaHash, after)
+            }),
+        };
 
-            // sort result
-            let items = Object.keys(appreciateCount.count).map(function(key) {
-                console.log(key);
-                return [key, appreciateCount.count[key]]
-            });
-
-            console.log(typeof appreciateCount.count);
-        }
-
-        fetch('https://server.matters.news/graphql/', options)
-            .then(res => res.json())
-            .then(parseResult)
-            .then(fetchAllArticleAppreciate);
-
+        let res = await fetch('https://server.matters.news/graphql/', options);
+        res = await res.json();
+        edges = res['data']['article']['appreciationsReceived']['edges'];
         
+        if(edges.length == 0){
+            return '';
+        }
+
+        edges.forEach(function (edge) {
+            let sender = edge['node']['sender']['displayName'];
+            let amount = edge['node']['amount'];
+
+            if(sender in obj) {
+                obj[sender] += amount;
+            } else {
+                obj[sender] = amount;
+            }
+        });
+
+        let lastEdge = edges.at(-1);
+        return lastEdge['cursor'];
+    }
+
+    async function fetchEachArticleAppreciate(obj, mediaHash, after) {
+        let cursor = after;
+
+        while(true) {
+            cursor = await fetchEachArticleAppreciateHepler(obj, mediaHash, cursor);
+            if(cursor == '') {
+                break;
+            }
+        }
+    }
+
+    async function fetchAllArticleAppreciate() {
+        console.log(`Total Article Number: ${allArticlesHash.length}`);
+
+        let appreciateCount = {};
+
+        for(let idx=0; idx<allArticlesHash.length; idx++) {
+            console.log(`Extract No.${idx} Article`);
+            await fetchEachArticleAppreciate(appreciateCount, allArticlesHash[idx], '');
+        }
+
+        console.log('Get appreciate info of each article.');
+
+        // sort
+        let items = Object.keys(appreciateCount).map(function(key) {
+            return [key, appreciateCount[key]];
+        });
+        items.sort(function(first, second) {
+            return second[1] - first[1];
+        });
+
+        return items;
     }
 </script>
