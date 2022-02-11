@@ -29,11 +29,15 @@
 
                 <div class="input-container">
                     <input type="text" name="username" id="input-username" placeholder="Matters Username">
-                    <button onclick="buttonClicked('like')">誰是粉絲</button>
+                    <button id="input-username-btn" onclick="buttonClicked('like')">誰是粉絲</button>
                 </div>
 
                 <div class="canvas-container">
                     <canvas id="most-like-chart"></canvas>
+                </div>
+
+                <div class="fans-name-container">
+                    <p></p>    
                 </div>
 
                 <div class="post-tag">
@@ -49,15 +53,6 @@
                 </div>
             </section>
 
-            <!-- 
-            <div class="box-divider"></div>
-
-            <section class="more-post">
-                MORE POST
-            </section>
-
-            <div class="box-divider"></div>
-            -->
             <section class="discussion">
                 <div id="disqus_thread"></div>
             </section>
@@ -291,6 +286,11 @@
                         border-width: 1px;
                         cursor: pointer;
                     }
+                
+                div.fans-name-container {
+                    width: 100% !important;
+                    margin: 3.5vh 0 5vh;
+                }
 
 
             
@@ -397,15 +397,17 @@
 
 <script>
 
-    var allArticlesHash;
-    var username_input;
+    var allArticlesHash = [];
+    var userURLTable = {};
+    var userIDTable = {};
+    var username_input = '';
 
     // find my big fans on matters and display as chart
     var defaultData = {
         labels: [],
         datasets: [{
         label: '粉絲',
-        backgroundColor: 'rgb(255, 99, 132)',
+        backgroundColor: 'rgb(43, 164, 227)',
         borderColor: 'rgb(255, 99, 132)',
         data: [],
         }]
@@ -424,9 +426,18 @@
 
     function buttonClicked(flag) {
 
+        // initialize
+        allArticlesHash = [];
+        userURLTable = {};
+
+        let fanNameEmt = document.querySelector('div.fans-name-container p');
+        while (fanNameEmt.firstChild) {
+            fanNameEmt.removeChild(fanNameEmt.lastChild);
+        }
+
         if(flag == 'like') {
 
-            allArticlesHash = [];
+            
             username_input = document.querySelector('#input-username').value;
             
             var options = {
@@ -443,13 +454,13 @@
                 .then(res => res.json())
                 .then(parseResult)
                 .then(fetchAllArticleAppreciate)
-                .then(drawChart1);
+                .then(displayResult1);
         }
 
     }
 
-    function drawChart1(fans) {
-        let items = fans.slice(0, 5);
+    function displayResult1(fans) {
+        let items = fans.slice(0, 10);
         let labels = [];
         let values = [];
 
@@ -462,6 +473,31 @@
         chart1.data.labels = labels;
         chart1.data.datasets[0].data = values;
         chart1.update();
+
+        document.querySelector('#input-username-btn').innerHTML = '誰是粉絲';
+
+        // show fans name
+        let fansNameContainer = document.querySelector('div.fans-name-container p');
+        fans.forEach(function(fan) {
+            
+            let spanEmt = document.createElement('span');
+            spanEmt.innerHTML = `@${fan[0]}`;
+            spanEmt.setAttribute('contenteditable', 'false');
+
+            let anchorEmt = document.createElement('a');
+            anchorEmt.setAttribute('class', 'mention');
+            anchorEmt.setAttribute('href', `/@${userURLTable[fan[0]]}`);
+            anchorEmt.setAttribute('target', '_blank');
+            anchorEmt.setAttribute('data-display-name', fan[0]);
+            anchorEmt.setAttribute('data-user-name', `${userURLTable[fan[0]]}`);
+            anchorEmt.setAttribute('data-id', `${userIDTable[fan[0]]}`);
+            anchorEmt.appendChild(spanEmt);
+            fansNameContainer.appendChild(anchorEmt);
+            
+            let lastAnchorEmts = document.querySelectorAll('div.fans-name-container p a');
+            lastAnchorEmts = lastAnchorEmts[Object.keys(lastAnchorEmts).at(-1)];
+            lastAnchorEmts.insertAdjacentHTML('afterend', "&nbsp;");
+        });
     }
 
     function prepareQuery1(username, after) {
@@ -482,8 +518,8 @@
                     edges {
                         cursor
                         node {
-                        title
-                        mediaHash
+                            title
+                            mediaHash
                         }
                     }
                     }
@@ -567,7 +603,7 @@
                             node {
                                 amount
                                 sender {
-                                    likerId
+                                    id
                                     displayName
                                     userName
                                 }
@@ -602,12 +638,22 @@
 
         edges.forEach(function (edge) {
             let sender = edge['node']['sender']['displayName'];
+            let sender_name = edge['node']['sender']['userName'];
+            let sender_id = edge['node']['sender']['id'];
             let amount = edge['node']['amount'];
 
             if(sender in obj) {
                 obj[sender] += amount;
             } else {
                 obj[sender] = amount;
+            }
+
+            if(!(sender in userURLTable)) {
+                userURLTable[sender] = sender_name;
+            }
+
+            if(!(sender in userIDTable)) {
+                userIDTable[sender] = sender_id;
             }
         });
 
@@ -627,12 +673,13 @@
     }
 
     async function fetchAllArticleAppreciate() {
-        console.log(`Total Article Number: ${allArticlesHash.length}`);
+        //console.log(`Total Article Number: ${allArticlesHash.length}`);
 
         let appreciateCount = {};
 
         for(let idx=0; idx<allArticlesHash.length; idx++) {
-            console.log(`Extract No.${idx} Article`);
+            //console.log(`Extract No.${idx} Article`);
+            document.querySelector('#input-username-btn').innerHTML = `${idx+1}/${allArticlesHash.length}`;
             await fetchEachArticleAppreciate(appreciateCount, allArticlesHash[idx], '');
         }
 
