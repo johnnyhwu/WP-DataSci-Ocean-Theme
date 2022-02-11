@@ -442,6 +442,7 @@
             
             var options = {
                 "method": "post",
+                'mode': 'cors',
                 "headers": {
                 "Content-Type": "application/json"  
                 },
