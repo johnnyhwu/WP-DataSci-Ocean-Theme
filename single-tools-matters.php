@@ -442,6 +442,7 @@
             
             var options = {
                 "method": "post",
+                'credentials': 'include',
                 "headers": {
                 "Content-Type": "application/json"  
                 },
@@ -450,7 +451,7 @@
                 }),
             };
 
-            fetch('https://cors-anywhere.herokuapp.com/https://server.matters.news/graphql/', options)
+            fetch('https://server.matters.news/graphql/', options)
                 .then(res => res.json())
                 .then(parseResult)
                 .then(fetchAllArticleAppreciate)
