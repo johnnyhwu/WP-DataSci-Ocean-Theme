@@ -8,9 +8,9 @@
 <div class="main-container">
     <div class="banner">
         <div class="left">
-            <div class="site-title">
+            <h1 class="site-title">
                 <?php echo get_bloginfo('name'); ?>
-            </div>
+            </h1>
 
             <div class="site-desc">
                 <?php echo get_field('site_desc'); ?>
@@ -34,7 +34,7 @@
             <?php
                 $args = array(
                     'numberposts' => -1,
-                    'post_type' => 'any'
+                    'post_type' => array('post', 'tools'),
                 );
                 
                 $latest_posts = get_posts($args);
@@ -138,7 +138,7 @@
             padding-right: 20px;
         }
 
-            div.main-container div.banner div.left div.site-title {
+            div.main-container div.banner div.left h1.site-title {
                 height: 22%;
                 width: 100%;
                 /*background-color: violet;*/
@@ -523,7 +523,7 @@
         padding: 2% 10%;
     }
 
-    div.main-container div.banner div.left div.site-title {
+    div.main-container div.banner div.left h1.site-title {
         font-size: 2.7rem;
     }
 
@@ -554,7 +554,7 @@
         padding: 2% 5%;
     }
 
-    div.main-container div.banner div.left div.site-title {
+    div.main-container div.banner div.left h1.site-title {
         font-size: 2.5rem;
     }
 
@@ -603,7 +603,7 @@
 
 @media screen and (max-width: 780px) {
 
-    div.main-container div.banner div.left div.site-title {
+    div.main-container div.banner div.left h1.site-title {
         font-size: 2.0rem;
         display: flex;
         flex-direction: column;
@@ -658,7 +658,7 @@
         margin-bottom: 4vh;
     }
 
-    div.main-container div.banner div.left div.site-title {
+    div.main-container div.banner div.left h1.site-title {
         text-align: center;
         margin-bottom: 12px;
     }
@@ -728,7 +728,7 @@
         height: 600px;
     }
 
-    div.main-container div.banner div.left div.site-title {
+    div.main-container div.banner div.left h1.site-title {
         font-size: 1.95rem;
     }
 
