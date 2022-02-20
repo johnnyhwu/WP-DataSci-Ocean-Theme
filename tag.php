@@ -15,7 +15,7 @@
             <?php
                 $args = array(
                     'numberposts' => -1,
-                    'category' => $cat_obj->term_id,
+                    'tag' => $cat_obj->slug,
                 );
                 
                 $latest_posts = get_posts($args);
