@@ -5,9 +5,9 @@
 
 <div class="main-container">
 
-    <div class="title-container">
+    <h1 class="title-container">
         <?php echo $cat_obj->name; ?>
-    </div>
+    </h1>
 
     <div class="sub-container">
         <div class="left">
@@ -89,7 +89,7 @@
 
 <style>
 
-div.main-container div.title-container {
+div.main-container h1.title-container {
     width: 100%;
     box-sizing: border-box;
     padding: 1.5% 18%;
@@ -365,7 +365,7 @@ div.main-container div.title-container {
 
 @media screen and (max-width: 1200px) {
 
-    div.main-container div.title-container {
+    div.main-container h1.title-container {
         padding: 2% 10%;
         font-size: 1.5rem;
     }
@@ -385,7 +385,7 @@ div.main-container div.title-container {
 
 @media screen and (max-width: 992px) {
 
-    div.main-container div.title-container {
+    div.main-container h1.title-container {
         padding: 2% 5%;
         padding-bottom: max(2%, 18px);
         padding-top: max(2%, 18px);
@@ -449,7 +449,7 @@ div.main-container div.title-container {
 
 @media screen and (max-width: 700px) {
 
-    div.main-container div.title-container {
+    div.main-container h1.title-container {
         font-size: 1.4rem;
     }
 
@@ -482,7 +482,7 @@ div.main-container div.title-container {
 
 @media screen and (max-width: 500px) {
 
-    div.main-container div.title-container {
+    div.main-container h1.title-container {
         font-size: 1.2rem;
     }
 
