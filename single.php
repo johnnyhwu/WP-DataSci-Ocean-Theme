@@ -1,5 +1,4 @@
 <?php
-    /* Template Name: 首頁*/
     get_header();
 ?>
 
