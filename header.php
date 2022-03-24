@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="<?php echo get_field('meta_desc', get_queried_object()); ?>">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
