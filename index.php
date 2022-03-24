@@ -598,6 +598,7 @@
             var div = document.createElement('div');
             div.setAttribute('data-id', videoId);
             var thumbNode = document.createElement('img');
+            thumbNode.alt = 'youtube video'
             thumbNode.src = '//i.ytimg.com/vi/ID/hqdefault.jpg'.replace(
             'ID',
             videoId
