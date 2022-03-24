@@ -282,7 +282,7 @@
         }
 
             div.left article {
-                width: 80%;
+                width: 88%;
                 height: 15vh;
                 
                 display: flex;
@@ -290,8 +290,8 @@
                 justify-content: row;
                 align-items: flex-start;
 
-                margin-bottom: 6vh;
-                min-height: 130px;
+                margin-bottom: 50px;
+                min-height: 145px;
             }
 
                 div.left article div.article-info {
@@ -323,8 +323,8 @@
                                 width: 100%;
                                 
                                 color: black;
-                                font-size: 1.3rem;
-                                font-weight: bold;
+                                font-size: 1.25rem;
+                                font-weight: 500;
 
                                 margin-bottom: 5px;
                             }
@@ -536,7 +536,7 @@
     }
 
     div.article-info a div.title {
-        font-size: 1.3rem;
+        font-size: 1.25rem;
     }
 
     div.article-info a div.abstract {
@@ -567,7 +567,7 @@
     }
 
     div.article-info a div.title {
-        font-size: 1.3rem;
+        font-size: 1.25rem;
     }
 
     div.article-info a div.abstract {
@@ -743,7 +743,8 @@
 
     div.left article {
         height: auto;
-        margin-bottom: 15px
+        margin-bottom: 15px;
+        min-height: 130px;
     }
 
     div.left article a.img-anchor {
