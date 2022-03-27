@@ -187,6 +187,7 @@ div.main-container h1.title-container {
                     div.left article a.img-anchor img {
                         min-height: 100%;
                         min-width: 100%;
+                        object-fit: cover;
                     }
 
 
@@ -270,6 +271,7 @@ div.main-container h1.title-container {
     div.left article a.img-anchor img {
         min-height: 100%;
         min-width: 100%;
+        object-fit: cover;
     }
 
     div.article-info a div.title {

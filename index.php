@@ -337,6 +337,7 @@
                     div.left article a.img-anchor img {
                         min-height: 100%;
                         min-width: 100%;
+                        object-fit: cover;
                     }
 
 
@@ -511,6 +512,7 @@
     div.left article a.img-anchor img {
         min-height: 100%;
         min-width: 100%;
+        object-fit: cover;
     }
 
     div.article-info a div.title {
