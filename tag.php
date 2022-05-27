@@ -328,7 +328,7 @@ div.main-container h1.title-container {
     }
 
     div.left > div.ad-box {
-        margin-top: 10px;
+        margin-top: 25px;
         margin-bottom: 25px;
     }
 
