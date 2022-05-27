@@ -356,15 +356,20 @@
                 width: 88%;
                 height: 15vh;
                 margin-bottom: 50px;
-                min-height: 145px;
-
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                background-color: #757575;
-                opacity: 0.3;
+                min-height: 145px;   
             }
+                
+                div.left > div.ad-box div {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    background-color: #757575;
+                    opacity: 0.3;
+
+                    height:100%;
+                    width: 100%;
+                }
 
 
 @media screen and (max-width: 1200px) {
