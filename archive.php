@@ -206,8 +206,8 @@ div.main-container h1.title-container {
             div.left > div.ad-box {
                 width: 80%;
                 height: 15vh;
-                margin-bottom: 50px;
-                min-height: 145px;   
+                margin-bottom: 6vh;
+                min-height: 130px;
             }
                 
                 div.left > div.ad-box div {
@@ -276,7 +276,8 @@ div.main-container h1.title-container {
         width: 100%;
     }
 
-    div.left article {
+    div.left article,
+    div.left > div.ad-box {
         width: 100%;
     }
 
