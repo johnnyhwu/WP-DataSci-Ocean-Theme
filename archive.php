@@ -21,6 +21,9 @@
                 $latest_posts = get_posts($args);
             ?>
 
+            <!-- a counter to display google ads -->
+            <?php $counter = 0; ?>
+
             <?php foreach($latest_posts as $post): ?>
                 
                     <article>
@@ -45,6 +48,16 @@
 
                             <a class="img-anchor" href="<?php echo get_permalink($post->ID); ?>"><img src="<?php echo get_field('thumbnail', $post->ID)['sizes']['medium'] ?>" alt="article thumbnail"></a>
                     </article>
+
+                    <?php if($counter!=0 && $counter%6==0): ?>
+                        <div class="ad-box">
+                            <div>
+                                AD
+                            </div>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php $counter++; ?>
                 
             <?php endforeach; ?>
         </div>
@@ -189,6 +202,25 @@ div.main-container h1.title-container {
                         min-width: 100%;
                         object-fit: cover;
                     }
+            
+            div.left > div.ad-box {
+                width: 80%;
+                height: 15vh;
+                margin-bottom: 50px;
+                min-height: 145px;   
+            }
+                
+                div.left > div.ad-box div {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    background-color: #757575;
+                    opacity: 0.3;
+
+                    height:100%;
+                    width: 100%;
+                }
 
 
 
