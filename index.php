@@ -465,7 +465,8 @@
         width: 100%;
     }
 
-    div.left article {
+    div.left article,
+    div.left > div.ad-box {
         width: 100%;
     }
 
