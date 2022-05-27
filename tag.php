@@ -235,7 +235,7 @@ div.main-container h1.title-container {
     }
 
     div.article-info a div.title {
-        font-size: 1.3rem;
+        font-size: 1.25rem;
     }
 
     div.article-info a div.abstract {
@@ -257,7 +257,7 @@ div.main-container h1.title-container {
     }
 
     div.article-info a div.title {
-        font-size: 1.3rem;
+        font-size: 1.25rem;
     }
 
     div.article-info a div.abstract {
