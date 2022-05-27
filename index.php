@@ -357,6 +357,13 @@
                 height: 15vh;
                 margin-bottom: 50px;
                 min-height: 145px;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                background-color: #757575;
+                opacity: 0.3;
             }
 
 
