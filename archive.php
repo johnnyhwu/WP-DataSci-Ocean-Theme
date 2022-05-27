@@ -323,10 +323,13 @@ div.main-container h1.title-container {
         font-size: 1.2rem;
     }
 
-    div.left article,
-    div.left > div.ad-box {
+    div.left article {
         height: auto;
-        margin-bottom: 15px
+        margin-bottom: 15px;
+    }
+
+    div.left > div.ad-box {
+        margin-bottom: 15px;
     }
 
     div.left article a.img-anchor {
