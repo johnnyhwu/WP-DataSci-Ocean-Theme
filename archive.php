@@ -329,7 +329,8 @@ div.main-container h1.title-container {
     }
 
     div.left > div.ad-box {
-        margin-bottom: 15px;
+        margin-top: 25px;
+        margin-bottom: 25px;
     }
 
     div.left article a.img-anchor {

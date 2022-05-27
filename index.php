@@ -581,6 +581,11 @@
         min-height: 130px;
     }
 
+    div.left > div.ad-box {
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+
     div.left article a.img-anchor {
         width: 130px;
         height: 100px
