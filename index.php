@@ -66,7 +66,7 @@
                             <a class="img-anchor" href="<?php echo get_permalink($post->ID); ?>"><img src="<?php echo get_field('thumbnail', $post->ID)['sizes']['medium'] ?>" alt="article thumbnail"></a>
                     </article>
 
-                    <?php if($counter!=0 && $counter%6==0): ?>
+                    <?php if($counter!=0 && $counter%10==0): ?>
                         <div class="ad-box">
                             <div>
                                 AD
