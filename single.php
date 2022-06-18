@@ -263,10 +263,12 @@
                         flex-direction: column;
                         justify-content: center;
                         align-items: center;
+
+                        width: 100%;
                     }
 
                         div.middle-content section.current-post div.youtube-player > div > img {
-                            max-width: 100%;
+                            width: 100%;
                             max-height: 100%;
                         }
 
