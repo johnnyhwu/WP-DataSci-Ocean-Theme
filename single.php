@@ -304,13 +304,13 @@
                         background-color: #757575;
                         opacity: 0.3;
 
-                        height:100%;
+                        height: 100%;
                         width: 100%;
                     }
 
                     div.middle-content section.current-post > div.ad-box ins,
                     div.middle-content section.current-post > div.ad-box iframe {
-                        /*max-width: 100% !important;*/
+                        max-width: 100% !important;
                     }
 
             
