@@ -292,6 +292,7 @@
                 div.middle-content section.current-post > div.ad-box {
                     width: 100%;
                     height: 15vh;
+                    margin-top: 50px;
                     margin-bottom: 50px;
                     min-height: 145px;   
                 }
