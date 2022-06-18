@@ -10,8 +10,8 @@
             <div class="name">Johnny</div>
             <div class="desc">對於電腦科學與深度學習感興趣，透過文章分享所學！</div>
             <div class="contact">
-                <button type="button" name="mail">寄信</button>
-                <button type="button" name="subscribe">訂閱</button>
+                <a name="mail" href = "mailto:startup0604@gmail.com?subject = [DataSci Ocean 讀者回饋]">寄信</a>
+                <a name="subscribe" href = "#">訂閱</a>
             </div>
         </div>
     </div>
@@ -108,8 +108,9 @@
                     align-items: flex-end;
                 }
 
-                    div.sidebar div.author-box > div > div.contact > button {
+                    div.sidebar div.author-box > div > div.contact > a {
                         background-color: #2ba4e3;
+                        text-decoration: none;
                         
                         color: white;
                         font-size: 0.9rem;
@@ -127,7 +128,7 @@
                         transition: color 0.2s linear, background-color 0.2s linear;
                     }
 
-                    div.sidebar div.author-box > div > div.contact > button:hover {
+                    div.sidebar div.author-box > div > div.contact > a:hover {
                         background-color: white;
                         
                         color: #2ba4e3;
@@ -146,7 +147,7 @@
                         padding: 4px 15px;
                     }
 
-                    div.sidebar div.author-box > div > div.contact > button[name="mail"] {
+                    div.sidebar div.author-box > div > div.contact > a[name="mail"] {
                         margin-right: 8%;
                     }
 
