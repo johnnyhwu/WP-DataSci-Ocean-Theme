@@ -329,7 +329,7 @@
                 adBoxs[i].appendChild(ins.cloneNode(true));
                 (adsbygoogle = window.adsbygoogle || []).push({});
             }
-        }, 5000);
+        }, 1000);
 
         
 
