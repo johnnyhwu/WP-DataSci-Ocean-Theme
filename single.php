@@ -288,6 +288,25 @@
                             width: 100%;
                             height: 360px;
                         }
+                
+                div.middle-content section.current-post > div.ad-box {
+                    width: 100%;
+                    height: 15vh;
+                    margin-bottom: 50px;
+                    min-height: 145px;   
+                }
+                    
+                    div.middle-content section.current-post > div.ad-box div {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        background-color: #757575;
+                        opacity: 0.3;
+
+                        height:100%;
+                        width: 100%;
+                    }
             
             section.discussion {
                 margin-top: 7vh;
