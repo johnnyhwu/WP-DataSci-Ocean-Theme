@@ -310,7 +310,7 @@
 
                     div.middle-content section.current-post > div.ad-box ins,
                     div.middle-content section.current-post > div.ad-box iframe {
-                        max-width: 100% !important;
+                        /*max-width: 100% !important;*/
                     }
 
             
