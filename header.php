@@ -320,7 +320,6 @@
 
     function initYouTubeVideos() {
         var playerElements = document.getElementsByClassName('youtube-player');
-        console.log("TEST");
         for (var n = 0; n < playerElements.length; n++) {
             var videoId = playerElements[n].dataset.id;
             var div = document.createElement('div');
