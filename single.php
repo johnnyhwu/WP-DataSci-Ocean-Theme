@@ -62,5 +62,5 @@
 </div>
 
 <?php
-    get_footer();
+    get_footer( '', array('load_posts' => FALSE) );
 ?>

@@ -31,15 +31,12 @@
 
             <?php
                 $args = array(
-                    'numberposts' => 10,
+                    'numberposts' => 8,
                     'post_type' => array('post', 'tools'),
                 );
                 
                 $latest_posts = get_posts($args);
             ?>
-
-            <!-- a counter to display google ads -->
-            <?php $counter = 0; ?>
 
             <?php foreach($latest_posts as $post): ?>
                 
@@ -65,16 +62,6 @@
 
                             <a class="img-anchor" href="<?php echo get_permalink($post->ID); ?>"><img src="<?php echo get_field('thumbnail', $post->ID)['sizes']['medium'] ?>" alt="article thumbnail"></a>
                     </article>
-
-                    <!-- <?php if($counter!=0 && $counter%10==0): ?>
-                        <div class="ad-box">
-                            <div>
-                                AD
-                            </div>
-                        </div>
-                    <?php endif; ?> -->
-
-                    <!-- <?php $counter++; ?> -->
             <?php endforeach; ?>
         </div>
 
@@ -84,41 +71,5 @@
 </div>
 
 <?php
-    get_footer();
+    get_footer( '', array('load_posts' => TRUE) );
 ?>
-
-
-<script>
-
-    var IS_EMPTY = (wpInfo.cat_count < 8) ? true : false; // if out of post in current category
-    var ON_LOADING = false; // loading new post now
-    var POST_IDX = (wpInfo.cat_count < 8) ? wpInfo.cat_count-1 : 7;
-
-
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-
-    window.onscroll = async function(ev) {
-        if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
-            // you're at the bottom of the page
-
-            if(IS_EMPTY) {
-                
-                // out of post in current category
-                // var spanEmt = document.querySelector('.archive-load-more span');
-                // spanEmt.innerHTML = '沒有更多文章囉！';
-                console.log()
-                return;
-            }
-
-            if(!ON_LOADING) {
-
-                // display 'loading...' and request new post 
-                await requestPost();
-
-                ON_LOADING = false;
-            }
-        }
-    };
-</script>

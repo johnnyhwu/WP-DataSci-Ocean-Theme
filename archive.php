@@ -14,15 +14,12 @@
 
             <?php
                 $args = array(
-                    'numberposts' => -1,
+                    'numberposts' => 8,
                     'category' => $cat_obj->term_id,
                 );
                 
                 $latest_posts = get_posts($args);
             ?>
-
-            <!-- a counter to display google ads -->
-            <?php $counter = 0; ?>
 
             <?php foreach($latest_posts as $post): ?>
                 
@@ -48,16 +45,6 @@
 
                             <a class="img-anchor" href="<?php echo get_permalink($post->ID); ?>"><img src="<?php echo get_field('thumbnail', $post->ID)['sizes']['medium'] ?>" alt="article thumbnail"></a>
                     </article>
-
-                    <?php if($counter!=0 && $counter%10==0): ?>
-                        <div class="ad-box">
-                            <div>
-                                AD
-                            </div>
-                        </div>
-                    <?php endif; ?>
-
-                    <?php $counter++; ?>
                 
             <?php endforeach; ?>
         </div>
@@ -66,3 +53,7 @@
     </div>
 
 </div>
+
+<?php
+    get_footer( '', array('load_posts' => TRUE) );
+?>
