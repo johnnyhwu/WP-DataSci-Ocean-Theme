@@ -31,7 +31,7 @@
 
             <?php
                 $args = array(
-                    'numberposts' => -1,
+                    'numberposts' => 10,
                     'post_type' => array('post', 'tools'),
                 );
                 
@@ -66,15 +66,15 @@
                             <a class="img-anchor" href="<?php echo get_permalink($post->ID); ?>"><img src="<?php echo get_field('thumbnail', $post->ID)['sizes']['medium'] ?>" alt="article thumbnail"></a>
                     </article>
 
-                    <?php if($counter!=0 && $counter%10==0): ?>
+                    <!-- <?php if($counter!=0 && $counter%10==0): ?>
                         <div class="ad-box">
                             <div>
                                 AD
                             </div>
                         </div>
-                    <?php endif; ?>
+                    <?php endif; ?> -->
 
-                    <?php $counter++; ?>
+                    <!-- <?php $counter++; ?> -->
             <?php endforeach; ?>
         </div>
 
