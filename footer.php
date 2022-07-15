@@ -108,7 +108,11 @@
                     adInnerEmt.style.backgroundColor = 'white';
                     adInnerEmt.style.opacity = '1.0';
                     adInnerEmt.appendChild(ins.cloneNode(true));
-                    // (adsbygoogle = window.adsbygoogle || []).push({});
+                    try {
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    } catch (err) {
+                        
+                    }
                     adEmt.appendChild(adInnerEmt);
                     container.appendChild(adEmt);
 
