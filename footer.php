@@ -23,13 +23,13 @@
     <script>
 
         // for google ads
-        // var ins = document.createElement('ins');
-        // ins.className = 'adsbygoogle';
-        // ins.style = "display:block; width: 100%";
-        // ins.setAttribute("data-ad-client", "ca-pub-4670030831550253");
-        // ins.setAttribute("data-ad-slot", "9186630544");
-        // ins.setAttribute("data-ad-format", "auto");
-        // ins.setAttribute("data-full-width-responsive", "true");
+        var ins = document.createElement('ins');
+        ins.className = 'adsbygoogle';
+        ins.style = "display:block; width: 100%";
+        ins.setAttribute("data-ad-client", "ca-pub-4670030831550253");
+        ins.setAttribute("data-ad-slot", "9186630544");
+        ins.setAttribute("data-ad-format", "auto");
+        ins.setAttribute("data-full-width-responsive", "true");
 
         var TAG_ID = '<?php echo $TAG_ID; ?>';
         var CAT_ID = '<?php echo $CAT_ID; ?>';
