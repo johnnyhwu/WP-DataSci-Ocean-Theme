@@ -39,6 +39,15 @@ div.main-container h1.title-container {
             align-items: flex-start;
         }
 
+            div.left div.load-more {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 14px;
+                color: #c4bfbe;
+                width: 88%;
+            }
+
             div.left article {
                 width: 80%;
                 height: 15vh;
