@@ -64,7 +64,9 @@
                 if(!ON_LOADING) {
                     // display 'loading...' and request new post 
                     await requestPost();
+                    await requestPost();
                     ON_LOADING = false;
+                    
                 }
             }
         };
