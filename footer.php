@@ -44,7 +44,7 @@
         
 
         window.onscroll = async function(ev) {
-            if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
                 // you're at the bottom of the page
 
                 if(IS_EMPTY) {
