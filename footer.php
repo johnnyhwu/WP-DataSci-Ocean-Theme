@@ -44,6 +44,9 @@
         
 
         window.onscroll = async function(ev) {
+            console.log((window.innerHeight + window.scrollY));
+            console.log(document.body.offsetHeight);
+            
             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
                 // you're at the bottom of the page
 
