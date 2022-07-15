@@ -109,13 +109,9 @@
                     adInnerEmt.style.backgroundColor = 'white';
                     adInnerEmt.style.opacity = '1.0';
                     adInnerEmt.appendChild(ins.cloneNode(true));
-                    try {
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    } catch (err) {
-
-                    }
                     adEmt.appendChild(adInnerEmt);
                     container.appendChild(adEmt);
+                    (adsbygoogle = window.adsbygoogle || []).push({});
 
                     // show all new articles
                     res.forEach(element => createNewGridItem(element));
