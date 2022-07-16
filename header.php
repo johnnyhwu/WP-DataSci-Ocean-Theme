@@ -120,27 +120,26 @@
         // display youtube video
         initYouTubeVideos();
 
-        // create google ads script after whole page is loaded for 5 seconds
-        var script = document.createElement('script');
-        script.async = true;
-        script.type = 'text/javascript';
-        script.crossorigin = "anonymous";
-        script.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4670030831550253';
-
-        var body = document.querySelector('body');
-
-        // insert ins element into home page after whole page is loaded for 5 seconds
-        var ins = document.createElement('ins');
-        ins.className = 'adsbygoogle';
-        ins.style = "display:block; width: 100%";
-        ins.setAttribute("data-ad-client", "ca-pub-4670030831550253");
-        ins.setAttribute("data-ad-slot", "9186630544");
-        ins.setAttribute("data-ad-format", "auto");
-        ins.setAttribute("data-full-width-responsive", "true");
-
-        var adBoxs = document.querySelectorAll('div.ad-box div');
-
         setTimeout(function insertGoogleADsScript() {
+            // create google ads script after whole page is loaded for 5 seconds
+            var script = document.createElement('script');
+            script.async = true;
+            script.type = 'text/javascript';
+            script.crossorigin = "anonymous";
+            script.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4670030831550253';
+
+            var body = document.querySelector('body');
+
+            // insert ins element into home page after whole page is loaded for 5 seconds
+            var ins = document.createElement('ins');
+            ins.className = 'adsbygoogle';
+            ins.style = "display:block; width: 100%";
+            ins.setAttribute("data-ad-client", "ca-pub-4670030831550253");
+            ins.setAttribute("data-ad-slot", "9186630544");
+            ins.setAttribute("data-ad-format", "auto");
+            ins.setAttribute("data-full-width-responsive", "true");
+
+            var adBoxs = document.querySelectorAll('div.ad-box div');
             body.appendChild(script);
 
             for(let i=0; i<adBoxs.length; i++) {
@@ -150,7 +149,7 @@
                 adBoxs[i].appendChild(ins.cloneNode(true));
                 (adsbygoogle = window.adsbygoogle || []).push({});
             }
-        }, 1000);
+        }, 3500);
 
         // display disqus section
         setTimeout(function loadDisqus() {
