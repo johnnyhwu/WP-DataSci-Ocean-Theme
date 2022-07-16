@@ -43,5 +43,12 @@ function add_tool_post_type() {
 }
 add_action('init', 'add_tool_post_type');
 
+// security
+add_filter('oembed_discovery_links', '__return_null' );
+remove_action('wp_head', 'rest_output_link_wp_head', 10);
+remove_action('template_redirect', 'rest_output_link_header', 11);
+remove_action('wp_head', 'wp_shortlink_wp_head', 10);
+remove_action('template_redirect', 'wp_shortlink_header', 11);
+
 
 ?>
