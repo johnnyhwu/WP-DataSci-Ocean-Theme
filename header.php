@@ -17,6 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<?php echo get_field('meta_desc', get_queried_object()); ?>">
 
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link 
@@ -25,6 +26,7 @@
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
         onload="this.onload=null; this.rel='stylesheet'"
     >
+
     <link rel="stylesheet" href="/wp-content/themes/DataSci-Ocean-WP-Theme/assets/css/header-minify.css">
     <link rel="stylesheet" href="/wp-content/themes/DataSci-Ocean-WP-Theme/assets/css/<?php echo $args['name']; ?>-minify.css">
     <?php if($args['name'] != 'single'): ?>
