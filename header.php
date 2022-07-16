@@ -25,10 +25,10 @@
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
         onload="this.onload=null; this.rel='stylesheet'"
     >
-    <link rel="stylesheet" href="/wp-content/themes/DataSci-Ocean-WP-Theme/assets/css/header.css">
-    <link rel="stylesheet" href="/wp-content/themes/DataSci-Ocean-WP-Theme/assets/css/<?php echo $args['name']; ?>.css">
+    <link rel="stylesheet" href="/wp-content/themes/DataSci-Ocean-WP-Theme/assets/css/header-minify.css">
+    <link rel="stylesheet" href="/wp-content/themes/DataSci-Ocean-WP-Theme/assets/css/<?php echo $args['name']; ?>-minify.css">
     <?php if($args['name'] != 'single'): ?>
-        <link rel="stylesheet" href="/wp-content/themes/DataSci-Ocean-WP-Theme/assets/css/sidebar.css">
+        <link rel="stylesheet" href="/wp-content/themes/DataSci-Ocean-WP-Theme/assets/css/sidebar-minify.css">
     <?php endif; ?>
     
     <noscript>
