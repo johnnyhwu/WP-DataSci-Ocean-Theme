@@ -297,11 +297,4 @@ div.post-container {
         font-size: 1.06rem;
         max-width: 85vw;
     }
-
-    div.middle-content section.current-post > div.ad-box {
-        width: 110%;
-        margin-left: calc(-1 * ((100vw - 100%) / 2));
-        margin-left: -webkit-calc(-1 * ((100vw - 100%) / 2));
-        margin-left: -moz-calc(-1 * ((100vw - 100%) / 2));
-    }
 }
