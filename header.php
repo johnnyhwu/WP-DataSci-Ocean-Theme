@@ -134,7 +134,7 @@
             // insert ins element into home page after whole page is loaded for 5 seconds
             var ins = document.createElement('ins');
             ins.className = 'adsbygoogle';
-            ins.style = "display:block; width: 100%; height: 100%;";
+            ins.style = "display:block; max-width: 100%;";
             ins.setAttribute("data-ad-client", "ca-pub-4670030831550253");
             ins.setAttribute("data-ad-slot", "9186630544");
             ins.setAttribute("data-ad-format", "auto");
