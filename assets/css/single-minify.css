@@ -299,7 +299,7 @@ div.post-container {
     }
 
     div.middle-content section.current-post > div.ad-box {
-        width: 100vw;
+        width: 110%;
         margin-left: calc(-1 * ((100vw - 100%) / 2));
         margin-left: -webkit-calc(-1 * ((100vw - 100%) / 2));
         margin-left: -moz-calc(-1 * ((100vw - 100%) / 2));
