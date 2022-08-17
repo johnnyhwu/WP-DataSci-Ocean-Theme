@@ -137,7 +137,7 @@
             ins.style = "display:block; max-width: 100%;";
             ins.setAttribute("data-ad-client", "ca-pub-4670030831550253");
             ins.setAttribute("data-ad-slot", "9186630544");
-            ins.setAttribute("data-ad-format", "auto");
+            ins.setAttribute("data-ad-format", "rectangle");
             ins.setAttribute("data-full-width-responsive", "false");
 
             var adBoxs = document.querySelectorAll('div.ad-box div');
