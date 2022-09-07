@@ -3,7 +3,7 @@
 <head>
     <title>
         <?php 
-            if(is_home()) {
+            if(is_front_page()) {
                 bloginfo('name');
             } else {
                 wp_title('');
